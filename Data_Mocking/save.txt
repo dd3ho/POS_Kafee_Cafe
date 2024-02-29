@@ -1,0 +1,421 @@
+package ku.cs.controllers;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import ku.cs.FXRouter;
+import ku.cs.models.Employee;
+
+import java.io.IOException;
+import java.sql.*;
+
+public class LoginController {
+
+
+    @FXML
+    private TextField usernameTextField;
+
+    @FXML
+    private PasswordField passwordField;
+
+
+    //เป็น account ที่ไว้ใช้ login
+    public Employee empLoginAccount;
+    String loginEmpId;
+    String loginName;
+    String loginJtitle;
+    String loginPassword;
+
+    //database connect
+    Connection conn = null;
+    Statement stmt = null;
+    ResultSet rs = null;
+
+    @FXML
+    void handleLoginButton(ActionEvent event) {
+
+        String emp_IdLoginStr = usernameTextField.getText();
+        String emp_passwordStr = passwordField.getText();
+
+        //DB connect
+        try {
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/test_loansystem", "root", "");
+            System.out.println("Connection is created successfully:");
+
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("SELECT Emp_id,Emp_name, Emp_jTitle ,Emp_password FROM employee  WHERE Emp_id = '"+emp_IdLoginStr+"'  AND  Emp_password = '"+emp_passwordStr+"'  ");
+
+            while (rs.next()){
+                loginEmpId = rs.getString(1);
+                loginName = rs.getNString(2);
+                loginJtitle = rs.getString(3);
+                loginPassword = rs.getString(4);
+                this.empLoginAccount = new Employee (loginEmpId,loginName,loginJtitle,loginPassword);
+                System.out.println(empLoginAccount.toCsv());
+            }
+            System.out.println("loginAccount can use from jdbc");
+        } catch (Exception excep) {
+            excep.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    conn.close();
+            } catch (SQLException se) {}
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        System.out.println("Please check it in the MySQL Table......... ……..");
+
+        if(empLoginAccount == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!!");
+            alert.setHeaderText(null);
+            alert.setContentText("ข้อมูลไม่ถูกต้องโปรดตรวจสอบความถูกต้องในการเข้าสู่ระบบอีกครั้ง");
+            alert.showAndWait();
+        }else{
+            if(empLoginAccount.getEmp_jTitle().equals("1")){
+                try {
+                    FXRouter.goTo("emp_home", empLoginAccount);
+                } catch (IOException e) {
+                    System.err.println("ไปที่หน้า emp_home ไม่ได้");
+                    System.err.println("ให้ตรวจสอบการกำหนด route");
+                }
+            }else {
+                if (empLoginAccount.getEmp_jTitle().equals("2")){
+                    try {
+                        FXRouter.goTo("manager_home", empLoginAccount);
+                    } catch (IOException e) {
+                        System.err.println("ไปที่หน้า manager_home ไม่ได้");
+                        System.err.println("ให้ตรวจสอบการกำหนด route");
+                    }
+                }else {
+                    try {
+                        FXRouter.goTo("creditboard_home", empLoginAccount);
+                    } catch (IOException e) {
+                        System.err.println("ไปที่หน้า creditboard_home ไม่ได้");
+                        System.err.println("ให้ตรวจสอบการกำหนด route");
+                    }
+                }
+            }
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+package ku.cs.controllers;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import ku.cs.FXRouter;
+import ku.cs.models.Customer;
+import ku.cs.models.CustomerDatabase;
+import ku.cs.services.FileDataSources.CustomerFileDataSource;
+import ku.cs.services.FileDataSources.DataSource;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.sql.*;
+import java.time.LocalDate;
+import java.sql.Connection;
+import java.util.Optional;
+
+import javax.swing.JOptionPane;
+import javax.swing.text.html.Option;
+
+
+public class RegisterController {
+
+    @FXML
+    private ImageView ctmImageView;
+
+    @FXML
+    private TextField firstnameTextField;
+
+    @FXML
+    private TextField lastNameTextField;
+
+    @FXML
+    private TextField IdNumberTextField;
+
+    @FXML
+    private CheckBox femaleCheckBox;
+
+    @FXML
+    private CheckBox maleCheckBox;
+
+    @FXML
+    private TextField phoneNumberTextField;
+
+    @FXML
+    private TextField bankAccountNumberTextField;
+
+    @FXML
+    private TextField addressTextField;
+
+    @FXML
+    private TextField workplaceTextField;
+
+    //-------------------------------------------------------------------------------------------------------------------------------------
+    private String sexCheckBoxStr; //female = 1, male = 2
+    private Customer ctmForSetImageView = new Customer("0");
+
+    //database connect
+    Connection conn = null;
+    Statement stmt = null;
+
+
+    @FXML
+    void handleFemaleCheckBox(ActionEvent event) {
+        maleCheckBox.setSelected(false);
+        if (femaleCheckBox.isSelected()) {
+            this.sexCheckBoxStr = "1"; //female = 1, male = 2
+        }
+    }
+
+    @FXML
+    void handleMaleCheckBox(ActionEvent event) {
+        femaleCheckBox.setSelected(false); //เมื่อกด check ที่ maleCheckbox ต้อง setSelected(false) เพื่อให้ check ได้แค่กล่องเดียว
+        if (maleCheckBox.isSelected()) {
+            this.sexCheckBoxStr = "2"; //female = 1, male = 2
+        }
+    }
+
+    @FXML
+    void handleUploadImageButton(ActionEvent event) {
+
+        FileChooser chooser = new FileChooser();
+
+        // SET FILECHOOSER INITIAL DIRECTORY
+        chooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+
+        // DEFINE ACCEPTABLE FILE EXTENSION
+        chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("images PNG JPG", "*.png", "*.jpg", "*.jpeg"));
+
+        // GET FILE FROM FILECHOOSER WITH JAVAFX COMPONENT WINDOW
+        Node source = (Node) event.getSource();
+        File file = chooser.showOpenDialog(source.getScene().getWindow());
+        if (file != null) {
+            try {
+                // CREATE FOLDER IF NOT EXIST
+                File destDir = new File("images");
+                if (!destDir.exists()) destDir.mkdirs();
+
+                // RENAME FILE
+                String[] fileSplit = file.getName().split("\\.");
+                String filename = LocalDate.now() + "_" + System.currentTimeMillis() + "."
+                        + fileSplit[fileSplit.length - 1];
+                Path target = FileSystems.getDefault().getPath(
+                        destDir.getAbsolutePath() + System.getProperty("file.separator") + filename
+                );
+
+                // COPY WITH FLAG REPLACE FILE IF FILE IS EXIST
+                Files.copy(file.toPath(), target, StandardCopyOption.REPLACE_EXISTING);
+
+                // SET NEW FILE PATH TO IMAGE
+                this.ctmImageView.setImage(new Image(target.toUri().toString()));
+
+                //setImagePath
+                ctmForSetImageView.setCtmImagePath(destDir + "/" + filename);
+                //System.out.println("Upload: "+accountForSetImagePath.getImagePath());
+
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    void handleRecordButton(ActionEvent event) throws SQLException {
+
+//        Connect();
+
+
+        //generate ctm_id
+        Customer randomCtm_id = new Customer("0", "0", "0", "0", "0", "0", "0", "0", "0", "0");
+        String ctm_idStr = randomCtm_id.generateCtm_id();
+        System.out.println("ctm_idStr1" + ctm_idStr);
+
+        //เขียนอ่านไฟล์ csv
+        DataSource<CustomerList> dataSource = new CustomerFileDataSource();
+        CustomerList customers = dataSource.readData();
+
+        //--------------------------------------------------------------------------------------------------------------
+        String idNumberStr = IdNumberTextField.getText();
+        String firstnameStr = firstnameTextField.getText();
+        String lastnameStr = lastNameTextField.getText();
+        String phoneNumStr = phoneNumberTextField.getText();
+        String bankAccNumStr = bankAccountNumberTextField.getText();
+        String addressStr = addressTextField.getText();
+        String workplaceStr = workplaceTextField.getText();
+
+
+        if (firstnameStr.equals("") || lastnameStr.equals("") || idNumberStr.equals("") || sexCheckBoxStr.equals("")
+                || phoneNumStr.equals("") || bankAccNumStr.equals("") || addressStr.equals("") || workplaceStr.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!!");
+            alert.setHeaderText(null);
+            alert.setContentText("Please check your information and try again.");
+
+            alert.showAndWait();
+
+        } else {
+            //ถ้าไม่ได้ upload รูป ให้ alert ว่า ใส่รูปด้วย
+            if (ctmForSetImageView.getCtm_img().equals("0")) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error!!");
+                alert.setHeaderText(null);
+                alert.setContentText("ใส่รูปของลูกค้าก่อนกดบันทึก");
+                alert.showAndWait();
+
+            } else {
+                //check ctm_id ว่าซ้ำกับที่มีอยู่ไหม ถ้าซ้าเข้า if ไม่ซ้ำ เข้า else
+                if (customers.checkCtm_idIsExits(ctm_idStr)) {
+                    System.out.println("เข้าแสดงว่า ctm _ id ซ้ำ");
+                    while (customers.checkCtm_idIsExits(ctm_idStr)) {
+                        ctm_idStr = randomCtm_id.generateCtm_id();
+                    }//while true ให้ generate ctm_id จนกว่าจะไม่ซ้ำ
+
+                } else {
+                    //check ctm_cid ว่าซ้ำกับที่มีอยู่ไหม ถ้าซ้าเข้า if
+                    // ไม่ซ้ำ เข้า else
+                    if (customers.checkCtm_CidIsExits(idNumberStr)) {
+                        clearTextField();
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Error!!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("ระบบมีฐานข้อมูลของลูกค้ารายนี้แล้ว");
+                        alert.showAndWait();
+
+                    } else {
+                        try {
+                            try {
+                                Class.forName("com.mysql.cj.jdbc.Driver");
+                            } catch (Exception e) {
+                                System.out.println(e);
+                            }
+                            conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/test_loansystem", "root", "");
+                            System.out.println("Connection is created successfully:");
+                            stmt = (Statement) conn.createStatement();
+                            String query1 = "INSERT INTO customer " + "VALUES ('"+ctm_idStr+"','"+idNumberStr+"','"+firstnameStr+"','"+lastnameStr+"','"+ctmForSetImageView.getCtm_img()+"','"+sexCheckBoxStr+"','"+phoneNumStr+"' ,'"+addressStr+"','"+workplaceStr+"','"+bankAccNumStr+"')";
+                            stmt.executeUpdate(query1);
+                            System.out.println("Record is inserted in the table successfully..................");
+                        } catch (Exception excep) {
+                            excep.printStackTrace();
+                        } finally {
+                            try {
+                                if (stmt != null)
+                                    conn.close();
+                            } catch (SQLException se) {}
+                            try {
+                                if (conn != null)
+                                    conn.close();
+                            } catch (SQLException se) {
+                                se.printStackTrace();
+                            }
+                        }
+                        System.out.println("Please check it in the MySQL Table......... ……..");
+                    }
+
+                        //บันทึกข้อมูลลูกค้า ใน file csv
+                        //new customer
+                        customers.addCustomer(new Customer(ctm_idStr, idNumberStr, firstnameStr, lastnameStr, ctmForSetImageView.getCtm_img(), sexCheckBoxStr, phoneNumStr, addressStr, workplaceStr, bankAccNumStr));
+                        //เขียนไฟล์
+                        dataSource.writeData(customers);
+
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Error!!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("ระบบบันทึกข้อมูลลูกค้าสำเร็จ");
+                        alert.showAndWait();
+
+                        try {
+                            FXRouter.goTo("emp_home");
+                        } catch (IOException e) {
+                            System.err.println("ไปที่หน้า menu ไม่ได้");
+                            System.err.println("ให้ตรวจสอบการกำหนด route");
+                        }
+                    }
+                }
+            }
+        }
+
+
+    @FXML
+    void handleBackButton(ActionEvent event) {
+
+        //ต้องการกลับไป Menu ใช่ไหม
+        //        JOptionPane.showMessage
+
+        //if ใช--> clear text field
+        // else ไม่ใช่
+
+
+        //jOptionPlane ใช้ภาษาไทยไม่ได้
+//        String[] options = {"confirm", "cancel"};
+//        var option = JOptionPane.showOptionDialog(null, "Do you want to go back the menu?","confirm",0,2,null,options,options[0]);
+//        if (option == 0){
+//            clearTextField();
+//            try {
+//                System.out.println("menu");
+//                FXRouter.goTo("menu");
+//            } catch (IOException e) {
+//                System.err.println("ไปที่หน้า signup ไม่ได้");
+//                System.err.println("ให้ตรวจสอบการกำหนด route");
+//            }
+//        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm");
+        alert.setContentText("ต้องการกลับสู่เมนูหลัก?");
+
+        //capture the dialog result of ok or cancel
+        Optional<ButtonType> result = alert.showAndWait();
+        if(result.get() == ButtonType.OK){
+            clearTextField();
+            try {
+                FXRouter.goTo("emp_home");
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า menu ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+            }
+        }
+
+    }
+
+    private void clearTextField() {
+        ctmForSetImageView = null;
+        IdNumberTextField.setText("");
+        firstnameTextField.setText("");
+        lastNameTextField.setText("");
+        ctmImageView.setImage(null);
+        femaleCheckBox.setSelected(false);
+        maleCheckBox.setSelected(false);
+        phoneNumberTextField.setText("");
+        addressTextField.setText("");
+        workplaceTextField.setText("");
+        bankAccountNumberTextField.setText("");
+    }
+}
+----------------------------------------------------------------------------------------------

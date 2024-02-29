@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.AddMemberController">
+   <children>
+      <ImageView fitHeight="473.0" fitWidth="669.0" layoutY="-3.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../image/bg-coffeepos.png" />
+         </image></ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b68e78" height="262.0" layoutX="110.0" layoutY="83.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-opacity: 0.5;" width="464.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1e1d8" height="232.0" layoutX="335.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="229.0" />
+      <Label layoutX="276.0" layoutY="41.0" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="28.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstNameField" alignment="CENTER" layoutX="363.0" layoutY="127.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="lastNameField" alignment="CENTER" layoutX="364.0" layoutY="181.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Button layoutX="465.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleSignUpButton" style="-fx-background-color: #845b44;" text="ลงทะเบียน" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Label layoutX="361.0" layoutY="107.0" text="ชื่อจริง">
+         <font>
+            <Font name="Leelawadee" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="363.0" layoutY="161.0" text="นามสกุล">
+         <font>
+            <Font name="Leelawadee" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="125.0" fitWidth="152.0" layoutX="155.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/Profile_icon.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="190.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleSignUpButton" style="-fx-background-color: #845b44;" text="เพิ่มรูป" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="phoneField" alignment="CENTER" layoutX="363.0" layoutY="230.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="362.0" layoutY="210.0" text="เบอร์โทรศัพท์">
+         <font>
+            <Font name="Leelawadee" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

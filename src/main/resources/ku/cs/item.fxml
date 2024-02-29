@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMousePressed="#click" prefHeight="150.0" prefWidth="185.0" style="-fx-background-radius: 30; -fx-background-color: #c6d2d3;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.ItemController">
+   <children>
+      <VBox layoutX="43.0" layoutY="-37.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="23.0" prefWidth="185.0">
+               <children>
+                  <Label fx:id="nameLabel" alignment="CENTER" prefHeight="19.0" prefWidth="102.0" text="Product" textFill="#545454">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="priceLabel" alignment="CENTER" prefHeight="54.0" prefWidth="52.0" text="Price" textFill="#545454">
+                     <font>
+                        <Font name="Cambria Bold" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="-5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Pane prefHeight="10.0" prefWidth="185.0">
+               <children>
+                  <Label layoutX="5.0" layoutY="-6.0" text="------------------------------------" textFill="#545454" />
+               </children>
+            </Pane>
+            <ImageView fx:id="img" fitHeight="110.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets left="27.0" />
+               </VBox.margin>
+            </ImageView>
+            <Pane layoutX="10.0" layoutY="33.0" prefHeight="10.0" prefWidth="185.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

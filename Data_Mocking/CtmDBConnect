@@ -1,0 +1,91 @@
+    //return list
+    @Override
+    public CustomerList readDatabase(String query) {
+
+        CustomerList list = new CustomerList();
+
+        databaseConnection = new DatabaseConnection();
+        Connection connectDB = databaseConnection.getConnection();
+        String connectQuery = query;
+
+        try{
+            Statement statement = connectDB.createStatement();
+            ResultSet queryOutput = statement.executeQuery(connectQuery);
+
+            while (queryOutput != null && queryOutput.next()){
+
+                String id = queryOutput.getString("Ctm_id");
+                String cid = queryOutput.getString("Ctm_cid");
+                String firstname = queryOutput.getString("Ctm_firstname");
+                String lastname = queryOutput.getString("Ctm_lastname");
+                String img = queryOutput.getString("Ctm_img");
+                String sex = queryOutput.getString("Ctm_sex");
+                String tel = queryOutput.getString("Ctm_tel");
+                String address = queryOutput.getString("Ctm_address");
+                String workplace = queryOutput.getString("Ctm_workplace");
+                String bankAcc = queryOutput.getString("Ctm_bankaccount");
+
+
+                list.addCustomer(new Customer(id, cid, firstname, lastname, img, sex, tel, address, workplace, bankAcc));
+
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+
+
+     //return list
+        @Override
+        public CustomerList readDatabase(String query) {
+
+            CustomerList list = new CustomerList();
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+
+                try (Connection cn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/test_loansystem", "root", "")) {
+                    Statement smt = (Statement) cn.createStatement();
+
+                    //query to display all records from table employee
+                    String q = query;
+
+                    //to execute query
+                    ResultSet rs = smt.executeQuery(q);
+
+                    //to print the resultset on console
+                    if (rs.next()) {
+                        do {
+                            String id = rs.getString(1);
+                            String cid =rs.getString(2);
+                            String fname = rs.getString(3);
+                            String lname = rs.getString(4);
+                            String img = rs.getString(5);
+                            String sex = rs.getString(6);
+                            String tel = rs.getString(7);
+                            String address = rs.getString(8);
+                            String workplace = rs.getString(9);
+                            String bankAcc = rs.getString(10);
+
+                            list.addCustomer(id, cid, fname, lname, img, sex, tel, address, workplace, bankAcc);
+                        } while (rs.next());
+                    } else {
+                        System.out.println("Record Not Found...");
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+            return list;
+
+        }
+
+
+
+
+
+

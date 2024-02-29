@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ED008C;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.old.ManagerHomeController">
+   <children>
+      <AnchorPane layoutY="84.0" prefHeight="541.0" prefWidth="802.0" style="-fx-background-color: #ffe6ea;">
+         <children>
+            <ImageView fitHeight="542.0" fitWidth="820.0" layoutX="-7.0" layoutY="2.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/Vector-Smart-Object-Mobile-2-360x240-1-1.jpg" />
+               </image>
+            </ImageView>
+            <Button layoutX="307.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleGotoAssignButton" prefHeight="82.0" prefWidth="219.0" text="1.มอบหมายงาน">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="338.0" layoutY="17.0" text="หน้าแรก" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="779.0" layoutY="7.0" onMouseClicked="#clickBackToLogin" style="-fx-background-color: #ffe6ea;" text="X">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/Government_Savings_bank.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

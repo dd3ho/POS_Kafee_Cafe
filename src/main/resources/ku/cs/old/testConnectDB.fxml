@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ED008C;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.old.SampleController">
+   <children>
+      <Label fx:id="showUsernameLabel" layoutX="160.0" layoutY="219.0" prefHeight="33.0" prefWidth="151.0" text="&lt;&lt;username show here&gt;&gt;" />
+      <Button fx:id="connectButton" layoutX="345.0" layoutY="300.0" mnemonicParsing="false" onAction="#connectButton" text="Connect" />
+      <Label fx:id="showLastnameLabel" layoutX="400.0" layoutY="219.0" prefHeight="33.0" prefWidth="151.0" text="&lt;&lt;lastname&gt;&gt;" />
+   </children>
+</AnchorPane>

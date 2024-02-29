@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ED008C;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.old.EmpReportController">
+   <children>
+      <AnchorPane layoutY="83.0" prefHeight="541.0" prefWidth="802.0" style="-fx-background-color: #ffe6ea;">
+         <children>
+            <ImageView fitHeight="541.0" fitWidth="809.0" layoutY="3.0" opacity="0.55" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-7.0">
+               <image>
+                  <Image url="@../../../image/Vector-Smart-Object-Mobile-2-360x240-1-1.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="52.0" layoutY="27.0" prefHeight="453.0" prefWidth="714.0" style="-fx-background-color: #ffe6ea; -fx-border-color: #ED008C;">
+               <children>
+                  <Label layoutX="320.0" layoutY="140.0" text="รหัสลูกค้า:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="100.0" text="ชื่อ:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="firstnameLabel" layoutX="360.0" layoutY="102.0" prefHeight="27.0" prefWidth="132.0" text="Firstname">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lastnameLabel" layoutX="505.0" layoutY="102.0" prefHeight="27.0" prefWidth="132.0" text="Lastname">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="ctmIdLabel" layoutX="420.0" layoutY="142.0" text="Ctm_id">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="180.0" text="สถานะใบแจ้งหนี้:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="invoice_statusLabel" layoutX="480.0" layoutY="182.0" text="Invoice_status">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="reportOfDebtorListView" layoutX="14.0" layoutY="45.0" prefHeight="364.0" prefWidth="292.0" />
+                  <Label layoutX="320.0" layoutY="20.0" prefHeight="30.0" prefWidth="48.0" text="วันที่:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateLabel" layoutX="380.0" layoutY="22.0" prefHeight="27.0" prefWidth="229.0" text="dateLabel">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="76.0" layoutY="14.0" prefHeight="30.0" prefWidth="149.0" text="ใบแจ้งหนี้ทั้งหมดที่ออกวันนี้">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="280.0" text="พนักงานที่ติดตามหนี้">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="emp_nameLabel" layoutX="365.0" layoutY="322.0" prefHeight="27.0" prefWidth="200.0" text="Emp_name">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="320.0" text="ชื่อ:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="360.0" text="รหัสพนักงาน:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="emp_idLabel" layoutX="450.0" layoutY="362.0" prefHeight="27.0" prefWidth="149.0" text="Emp_id">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="220.0" prefHeight="30.0" prefWidth="157.0" text="วันที่ออกใบแจ้งหนี้">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dateInvoiceLabel" layoutX="488.0" layoutY="222.0" prefHeight="27.0" prefWidth="149.0" text="dateInvoiceLabel">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="320.0" layoutY="60.0" prefHeight="30.0" prefWidth="145.0" text="เลขที่ใบเเจ้งหนี้:">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="invoiceIdLabel" layoutX="465.0" layoutY="62.0" prefHeight="27.0" prefWidth="118.0" text="invoiceId">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Label layoutX="780.0" layoutY="6.0" onMouseClicked="#clickBackToEmp_home" style="-fx-background-color: #ffe6ea;" text="X">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/Government_Savings_bank.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="282.0" layoutY="11.0" text="ระบบส่งผลรายงาน" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

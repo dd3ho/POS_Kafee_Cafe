@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ED008C;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.old.CreditBoardUpdate2Controller">
+   <children>
+      <AnchorPane layoutY="73.0" prefHeight="541.0" prefWidth="802.0" style="-fx-background-color: #ffe6ea;">
+         <children>
+            <ImageView fitHeight="637.0" fitWidth="813.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/Vector-Smart-Object-Mobile-2-360x240-1-1.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutX="110.0" layoutY="47.0" prefHeight="420.0" prefWidth="649.0" style="-fx-background-color: #ffe6ea; -fx-border-color: #ED008C;">
+               <children>
+                  <Label layoutX="188.0" layoutY="14.0" text="รายชื่อรอการอนุมัติเอกสารเงินกู้">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="15.0" layoutY="55.0" prefHeight="35.0" prefWidth="89.0" text="รหัสลูกค้า:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="15.0" layoutY="90.0" prefHeight="35.0" prefWidth="33.0" text="ชื่อ:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="15.0" layoutY="160.0" prefHeight="35.0" prefWidth="115.0" text="เลขที่เอกสาร:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="dtb_customerId" layoutX="104.0" layoutY="59.0" text="customerid">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="fnameLabel" layoutX="57.0" layoutY="93.0" prefHeight="27.0" prefWidth="146.0" text="name">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="lastnameLabel" layoutX="97.0" layoutY="128.0" prefHeight="27.0" prefWidth="194.0" text="lastname">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Label fx:id="dtb_IdLabel" layoutX="135.0" layoutY="163.0" prefHeight="27.0" prefWidth="146.0" text="id">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
+                  <Button layoutX="15.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleDoc1Button" prefHeight="35.0" prefWidth="97.0" text="Document 1" />
+                  <Button layoutX="15.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleDoc2Button" prefHeight="35.0" prefWidth="97.0" text="Document 2" />
+                  <Button layoutX="15.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleDoc3Button" prefHeight="35.0" prefWidth="97.0" text="Document 3" />
+                  <Button layoutX="15.0" layoutY="325.0" mnemonicParsing="false" onAction="#handleDoc4Button" prefHeight="35.0" prefWidth="97.0" text="Document 4" />
+                  <ImageView fitHeight="343.0" fitWidth="301.0" layoutX="325.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true" />
+                  <CheckBox fx:id="doc1Checkbox" layoutX="126.0" layoutY="205.0" mnemonicParsing="false" onAction="#handleDoc1Checkbox" prefHeight="35.0" prefWidth="46.0" text="ผ่าน">
+                     <font>
+                        <Font size="13.0" />
+                     </font></CheckBox>
+                  <CheckBox fx:id="doc2Checkbox" layoutX="126.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleDoc2Checkbox" prefHeight="35.0" prefWidth="46.0" text="ผ่าน">
+                     <font>
+                        <Font size="13.0" />
+                     </font></CheckBox>
+                  <CheckBox fx:id="doc3Checkbox" layoutX="126.0" layoutY="293.0" mnemonicParsing="false" onAction="#handleDoc3Checkbox" text="ผ่าน">
+                     <font>
+                        <Font size="13.0" />
+                     </font></CheckBox>
+                  <CheckBox fx:id="doc4Checkbox" layoutX="126.0" layoutY="333.0" mnemonicParsing="false" onAction="#handleDoc4Checkbox" text="ผ่าน">
+                     <font>
+                        <Font size="13.0" />
+                     </font></CheckBox>
+                  <ImageView fx:id="dtbDocImageView" fitHeight="343.0" fitWidth="330.0" layoutX="296.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="15.0" layoutY="125.0" prefHeight="35.0" prefWidth="79.0" text="นามสกุล:">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="15.0" layoutY="370.0" mnemonicParsing="false" onAction="#approveButton" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #C84C4C; -fx-background-radius: 20;" text="อนุมัติ" textFill="#fbfdf4">
+                     <font>
+                        <Font name="Cambria" size="20.0" />
+                     </font>
+                     <effect>
+                        <DropShadow offsetX="2.0" offsetY="2.0">
+                           <color>
+                              <Color red="0.3294117748737335" green="0.3294117748737335" blue="0.3294117748737335" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button layoutX="125.0" layoutY="370.0" mnemonicParsing="false" onAction="#disapprovedButton" prefHeight="38.0" prefWidth="80.0" style="-fx-background-color: #C84C4C; -fx-background-radius: 20;" text="ยกเลิก" textFill="#fbfdf4">
+                     <font>
+                        <Font name="Cambria" size="20.0" />
+                     </font>
+                     <effect>
+                        <DropShadow offsetX="2.0" offsetY="2.0">
+                           <color>
+                              <Color red="0.3294117748737335" green="0.3294117748737335" blue="0.3294117748737335" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Label fx:id="empNameLabel" alignment="CENTER_RIGHT" layoutX="531.0" layoutY="14.0" prefHeight="21.0" prefWidth="227.0" text="empName">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <Label layoutX="780.0" layoutY="6.0" onMouseClicked="#clickBackToEmp_home" style="-fx-background-color: #ffe6ea;" text="X">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="284.0" layoutY="6.0" text="ระบบอนุมัติเงินกู้" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="-8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../image/Government_Savings_bank.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
