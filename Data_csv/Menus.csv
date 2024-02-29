@@ -1,0 +1,9 @@
+mn001,ลาเต้,60.0,imagemenu1,sell,normal,null
+mn002,ชาเขียวมัทฉะกรีนที,65.0,imagemenu2,sell,extra,null
+mn003,โกโก้,60.0,imagemenu3,closed,normal,null
+mn004,latte,60.0,test,sell,less,drink
+mn005,cake,45.0,test,sell,less,dessert
+mn006,ชาไทย,60.0,test,sell,no,fresh,drink
+mn007,tttt,14.0,Screenshot 2023-03-31 161554.png,sell,,,drink
+mn008,t,45.0,Screenshot 2023-03-31 162419.png,sell,normal,dessert
+mn009,test,45.0,Screenshot 2023-03-31 162419.png,sell,normal,dessert

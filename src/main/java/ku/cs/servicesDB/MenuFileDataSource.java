@@ -57,8 +57,7 @@ public class MenuFileDataSource implements DataSource<MenuList>{
             writer = new FileWriter(file);
             buffer = new BufferedWriter(writer);
 
-
-            buffer.write(menus.toCsv());
+            buffer.write(menuList.toCsv());
 
 
         } catch (IOException e) {

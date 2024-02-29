@@ -135,7 +135,7 @@ public class AddDessertController {
 
             // write to csv --- null
             MenuList menuListToCsv = database.readDatabase("SELECT * FROM menu");
-            System.out.println(menuListToCsv.toCsv());
+            //System.out.println(menuListToCsv.toCsv());
             DataSource<MenuList> dataSource = new MenuFileDataSource();
             dataSource.writeData(menuListToCsv);
         }
