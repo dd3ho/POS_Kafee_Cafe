@@ -125,7 +125,7 @@ public class Promotion_DBConnect implements Database<Promotion, PromotionList>{
 
             while (rs.next()) {
                 pro_code = rs.getString(1);
-                pro_pDiscount = Float.parseFloat(rs.getNString(2));
+                pro_pDiscount = Float.parseFloat(rs.getString(2));
                 pro_bDiscount = Float.valueOf(rs.getString(3));
                 pro_mnId = rs.getString(4);
 

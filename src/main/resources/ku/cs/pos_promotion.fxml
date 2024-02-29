@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="659.0" style="-fx-background-color: f1e1d8;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.AddDrinkController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="659.0" style="-fx-background-color: f1e1d8;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.AddPromotionController">
    <children>
       <Label layoutX="259.0" layoutY="56.0" text="Promotion" textFill="#845b44">
          <font>
@@ -15,31 +15,31 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f1e1d8" height="271.0" layoutX="174.0" layoutY="114.0" stroke="#b68e78" strokeType="INSIDE" strokeWidth="5.0" width="312.0" />
-      <TextField layoutX="208.0" layoutY="153.0" prefHeight="26.0" prefWidth="235.0" />
+      <TextField fx:id="codeTextField" layoutX="208.0" layoutY="153.0" prefHeight="26.0" prefWidth="235.0" />
       <Label layoutX="208.0" layoutY="126.0" text="Code">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="205.0" layoutY="220.0" prefHeight="26.0" prefWidth="114.0" />
+      <TextField fx:id="dPercentTextField" layoutX="205.0" layoutY="220.0" prefHeight="26.0" prefWidth="114.0" />
       <Label layoutX="208.0" layoutY="193.0" text="Discount %">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="346.0" layoutY="220.0" prefHeight="26.0" prefWidth="114.0" />
+      <TextField fx:id="dBahtTextField" layoutX="346.0" layoutY="220.0" prefHeight="26.0" prefWidth="114.0" />
       <Label layoutX="349.0" layoutY="193.0" text="Discount Baht">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <TextField layoutX="204.0" layoutY="290.0" prefHeight="26.0" prefWidth="248.0" />
+      <TextField fx:id="menuTextField" layoutX="204.0" layoutY="290.0" prefHeight="26.0" prefWidth="248.0" />
       <Label layoutX="207.0" layoutY="263.0" text="Menu">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <Button layoutX="269.0" layoutY="334.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #845b44;" text="Add" textFill="WHITE">
+      <Button layoutX="269.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleAddBtn" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #845b44;" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

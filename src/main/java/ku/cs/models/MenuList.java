@@ -15,6 +15,7 @@ public class MenuList {
     public int countMenus() {
         return menus.size();
     }
+    public Menu getMenu(int i){ return menus.get(i);}
     public String toCsv() {
         String result = "";
         for (Menu menu : this.menus){
