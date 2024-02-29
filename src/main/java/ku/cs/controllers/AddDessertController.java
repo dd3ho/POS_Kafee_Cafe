@@ -12,11 +12,17 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import ku.cs.models.Menu;
 import ku.cs.models.MenuList;
+import ku.cs.servicesDB.DataSource;
 import ku.cs.servicesDB.Database;
+import ku.cs.servicesDB.MenuFileDataSource;
 import ku.cs.servicesDB.Menu_DBConnection;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -121,6 +127,17 @@ public class AddDessertController {
             menu.setMn_Id(menuList);
             database.insertDatabase(menu);
             System.out.println(menu.getMn_Id() + "," + menu.getMn_name() + "," + menu.getMn_option());
+
+            // save image
+            File file = new File("menu_photo");
+            Path path = FileSystems.getDefault().getPath(file.getAbsolutePath() + "\\" + imageName);
+            Files.copy(selectedFile.toPath(), path, StandardCopyOption.REPLACE_EXISTING);
+
+            // write to csv --- null
+            MenuList menuListToCsv = database.readDatabase("SELECT * FROM menu");
+            System.out.println(menuListToCsv.toCsv());
+            DataSource<MenuList> dataSource = new MenuFileDataSource();
+            dataSource.writeData(menuListToCsv);
         }
     }
 
