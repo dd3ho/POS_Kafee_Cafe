@@ -156,7 +156,7 @@ public class AddDrinkController {
         menu.setM_type("drink");
         menu.setMn_status("sell");
         menu.setMn_option(sweet + "," + milk);
-        menu.setMn_img(imageName);
+        menu.setMn_img("menu_photo/"+ imageName);
 
         if (nameField.equals("") || priceField.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

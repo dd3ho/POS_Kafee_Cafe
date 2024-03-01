@@ -113,7 +113,7 @@ public class AddDessertController {
 
         menu.setMn_name(nameStr);
         menu.setMn_price(Float.valueOf(priceStr));
-        menu.setMn_img(imageName);
+        menu.setMn_img("menu_photo/"+ imageName);
 
         if (nameField.equals("") || priceField.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

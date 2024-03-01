@@ -1,6 +1,8 @@
 package ku.cs.models;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class MenuList {
     private ArrayList<Menu> menus;
@@ -22,5 +24,9 @@ public class MenuList {
             result += menu.toCsv() + "\n";
         }
         return result;
+    }
+
+    public List<Menu> getMenuList() {
+        return menus;
     }
 }

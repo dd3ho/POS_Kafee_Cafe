@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #82A4A8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.StoreController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #82A4A8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.shopController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -109,6 +110,30 @@
                               </Label>
                            </children>
                         </HBox>
+                        <AnchorPane prefHeight="63.0" prefWidth="77.0">
+                           <children>
+                              <ImageView fitHeight="60.0" fitWidth="59.0" layoutX="1.0" layoutY="3.0">
+                                 <image>
+                                    <Image url="@../../../../../../../../../Downloads/coffee-cup-svgrepo-com.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="69.0" layoutY="1.0" prefHeight="63.0" prefWidth="71.0" text=".............." textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="totalOrderLabel" alignment="CENTER" layoutX="140.0" layoutY="1.0" prefHeight="63.0" prefWidth="65.0" text="Total" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="223.0" layoutY="3.0" prefHeight="60.0" prefWidth="94.0" text=".............." textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </VBox>
                   <HBox prefHeight="14.0" prefWidth="350.0" />
@@ -160,7 +185,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#handleBackToUserButton" prefHeight="28.0" prefWidth="62.0" style="-fx-background-color: #545454; -fx-background-radius: 20;" text="STAFF" textFill="#fbfdf4">
+                        <Button mnemonicParsing="false" onAction="#handleBackToStaffButton" prefHeight="28.0" prefWidth="62.0" style="-fx-background-color: #545454; -fx-background-radius: 20;" text="STAFF" textFill="#fbfdf4">
                            <effect>
                               <DropShadow offsetX="2.0" offsetY="2.0">
                                  <color>
@@ -187,7 +212,7 @@
                               <Insets left="15.0" top="15.0" />
                            </HBox.margin>
                         </Label>
-                        <Button mnemonicParsing="false" onAction="#handleHightToLowButton" style="-fx-background-color: #527b7c;" text="Dessert" textFill="#fbfdf4">
+                        <Button mnemonicParsing="false" onAction="#handleDessertTypeButton" style="-fx-background-color: #527b7c;" text="Dessert" textFill="#fbfdf4">
                            <font>
                               <Font name="Cambria" size="14.0" />
                            </font>
@@ -202,7 +227,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#handleLowToHightButton" style="-fx-background-color: #527b7c;" text="Drink" textFill="#fbfdf4">
+                        <Button mnemonicParsing="false" onAction="#handleDrinkTypeButton" style="-fx-background-color: #527b7c;" text="Drink" textFill="#fbfdf4">
                            <font>
                               <Font name="Cambria" size="14.0" />
                            </font>
@@ -217,7 +242,7 @@
                               <Insets left="10.0" top="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button layoutX="262.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleSortByTimeButton" style="-fx-background-color: #527b7c;" text="Other" textFill="#fbfdf4">
+                        <Button layoutX="262.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleOtherButton" style="-fx-background-color: #527b7c;" text="Other" textFill="#fbfdf4">
                            <font>
                               <Font name="Cambria" size="14.0" />
                            </font>

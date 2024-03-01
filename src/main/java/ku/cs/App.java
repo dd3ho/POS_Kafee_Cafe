@@ -14,13 +14,13 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-//    public static final String CURRENCY = "$";
+    public static final String CURRENCY = "$";
     @Override
     public void start(Stage stage) throws IOException {
         FXRouter.bind(this, stage, "Coffee POS",669, 473);
         configRoute();
 
-        FXRouter.goTo("pos_addDessert");
+        FXRouter.goTo("shop");
 
     }
 
@@ -41,7 +41,7 @@ public class App extends Application {
         FXRouter.when("pos_addMember",packageStr+"pos_member_signup.fxml");
         FXRouter.when("pos_promotion",packageStr+"pos_promotion.fxml");
         //coffee POS Staff
-
+        FXRouter.when("shop",packageStr+"shop.fxml");
 
 
 
