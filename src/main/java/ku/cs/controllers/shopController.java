@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -137,8 +138,16 @@ public class shopController {
         priceLabel.setText(App.CURRENCY+menu.getMn_price());
 
 //        System.out.println("139: " + menu.getMn_img());
-        Image image = new Image("file:"+menu.getMn_img(), true);
+        Image image = new Image("file:"+menu.getMn_img());
         productImageImageView.setImage(image);
+        // ตั้งค่า viewport ของ ImageView
+//        Rectangle2D viewportRect = new Rectangle2D(0, 0, 173, 164);
+//        productImageImageView.setViewport(viewportRect);
+
+        productImageImageView.setFitWidth(173); // กำหนดค่าที่ต้องการสำหรับกว้าง
+        productImageImageView.setFitHeight(129); // ปล่อยให้ค่านี้เป็น 0 เพื่อให้ระบบปรับขนาดอัตโนมัติตามความกว้างที่กำหนด
+        productImageImageView.setPreserveRatio(true);
+        productImageImageView.setSmooth(false); //
 
 //        productQuantityLabel.setText(menu).getQuantity1());
 
