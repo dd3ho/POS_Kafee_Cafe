@@ -29,7 +29,8 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
             conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/pm_project", "root", "");
             System.out.println("Connection is created successfully:");
             stmt = (Statement) conn.createStatement();
-            String query1 = "INSERT INTO order_deatail " + "VALUES ('" + order_detail.getO_Id() + "','" + order_detail.getO_receiptId() + "','" + order_detail.getO_mnId() + "','" + order_detail.getO_amount() + "','" + order_detail.getO_price() + "')";
+            String query1 = "INSERT INTO order_deatail " + "VALUES ('" + order_detail.getO_Id() + "','" + order_detail.getO_receiptId() + "','" + order_detail.getO_mnId() + "','" + order_detail.getO_mnName() + "','" + order_detail.getO_amount() + "','" + order_detail.getO_priceTotal() +
+                    "','" + order_detail.getO_priceByUnit() + "','" + order_detail.getO_sweet() + "','" + order_detail.getO_milk() + "')";
             stmt.executeUpdate(query1);
             System.out.println("Record is inserted in the table successfully..................");
         } catch (Exception excep) {
@@ -70,11 +71,16 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
                 String o_Id = rs.getString(1);
                 String o_receiptId = rs.getNString(2);
                 String o_mnId = rs.getString(3);
-                int o_amount = Integer.parseInt(rs.getString(4));
-                float o_price = Float.parseFloat(rs.getNString(5));
+                String o_mnName = rs.getString(4);
+                int o_amount = Integer.parseInt(rs.getString(5));
+                float o_priceTotal = Float.parseFloat(rs.getNString(6));
+                float o_priceByUnit = Float.parseFloat(rs.getNString(7));
+                String o_sweet = rs.getString(8);
+                String o_milk = rs.getString(9);
 
 
-                this.orderRecord = new OrderDetail(o_Id, o_receiptId, o_mnId, o_amount, o_price);
+                this.orderRecord = new OrderDetail(o_Id, o_receiptId, o_mnId,
+                        o_mnName, o_amount, o_priceTotal, o_priceByUnit, o_sweet, o_milk);
 //                System.out.println(empLoginAccount.toCsv());
             }
             System.out.println("receiptRecord can use from jdbc");
@@ -118,11 +124,16 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
                 String o_Id = rs.getString(1);
                 String o_receiptId = rs.getNString(2);
                 String o_mnId = rs.getString(3);
-                int o_amount = Integer.parseInt(rs.getString(4));
-                float o_price = Float.parseFloat(rs.getNString(5));
+                String o_mnName = rs.getString(4);
+                int o_amount = Integer.parseInt(rs.getString(5));
+                float o_priceTotal = Float.parseFloat(rs.getNString(6));
+                float o_priceByUnit = Float.parseFloat(rs.getNString(7));
+                String o_sweet = rs.getString(8);
+                String o_milk = rs.getString(9);
 
 
-                this.orderRecord = new OrderDetail(o_Id, o_receiptId, o_mnId, o_amount, o_price);
+                this.orderRecord = new OrderDetail(o_Id, o_receiptId, o_mnId,
+                        o_mnName, o_amount, o_priceTotal, o_priceByUnit, o_sweet, o_milk);
                 list.addOrder(orderRecord);
 //                System.out.println(empLoginAccount.toCsv());
             }

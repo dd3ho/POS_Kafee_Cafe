@@ -1,5 +1,7 @@
 package ku.cs.controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,14 +15,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import ku.cs.App;
-import ku.cs.models.Member;
+import ku.cs.models.*;
 import ku.cs.models.Menu;
-import ku.cs.models.MenuList;
-import ku.cs.models.OrderDetail;
-import ku.cs.servicesDB.Database;
-import ku.cs.servicesDB.MenuFileDataSource;
-import ku.cs.servicesDB.Menu_DBConnection;
-import ku.cs.servicesDB.MyListener;
+import ku.cs.servicesDB.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,6 +60,9 @@ public class shopController {
     @FXML
     private TextField detailTextField;
 
+    @FXML
+    private ListView<String> orderListview;
+
 
 
     //prepare data
@@ -72,6 +72,13 @@ public class shopController {
     private List<Menu> menusStock = new ArrayList<>();
     private Member member;
     private OrderDetail orderDetail;
+
+    //ข้อมูลสำหรับการเพิ่มเข้า Listview
+    private Menu menuOrder;
+
+    // Listview
+    private javafx.collections.ObservableList<String> ObservableList;
+    private OrderDetailList orderNowList = new OrderDetailList();
 
 
     @FXML
@@ -86,9 +93,13 @@ public class shopController {
         menuList = new MenuList();
         String query = "SELECT * FROM menu WHERE mn_status = 'sell'";
         menuList = databaseMenu.readDatabase(query);
-
         // เพิ่มข้อมูลจาก menuList เข้าไปใน menusStock โดยไม่ต้องทำการแปลงชนิดข้อมูล
         menusStock.addAll(menuList.getMenuList());
+
+        // This will clear the data in the "data/orders.csv" file
+        OrderDetailFileDataSource dataSourceOrderNow = new OrderDetailFileDataSource("data", "OrdersNow.csv");
+        dataSourceOrderNow.clearData();
+
 
         //set choice box
         milkChoiceBox.getItems().addAll("Fresh Milk", "Almond Milk", "Oat Milk", "None");
@@ -149,6 +160,7 @@ public class shopController {
 
     private void setChosenProductCardVBox(Menu menu){
 
+        menuOrder = menu;
         nameLabel.setText(menu.getMn_name());
         priceLabel.setText(App.CURRENCY+menu.getMn_price());
 
@@ -192,7 +204,44 @@ public class shopController {
 
     @FXML
     void handleAddButton(ActionEvent event) {
+        //เขียนอ่านไฟล์
+        DataSource<OrderDetailList> dataSource = new OrderDetailFileDataSource("data", "ordersNow.csv");
+        OrderDetailList orders = dataSource.readData("data", "OrdersNow.csv");
+        //Order Detail
+        // [1] o_Id , [2] o_receiptId, [3] o_mnId, [4] o_mnName
+        // [5] o_amount, [6] o_priceTotal [7] o_priceByUnit [8] o_sweet
+        // [9] o_milk
+        System.out.println("orderList");
+        System.out.println(orders.toCsv());
+        System.out.println("MenuOrder");
+        System.out.println(menuOrder.toCsv());
+        orders.addOrder(new OrderDetail(
+                "none",
+                "none",
+                menuOrder.getMn_Id(),
+                menuOrder.getMn_name(),
+                Integer.parseInt(amountLabel.getText()),
+                0,
+                menuOrder.getMn_price(),
+                sweetnessChoiceBox.getValue(),
+                milkChoiceBox.getValue()));
+        dataSource.writeData(orders);
+        showListView(orders);
 
+        //set Listview
+
+    }
+    private void showListView(OrderDetailList orders) {
+        ObservableList = FXCollections.observableArrayList();
+        orderNowList = orders;
+        for(int i = orderNowList.countElement()-1; i>=0; i--)
+        {
+            OrderDetail order = orderNowList.getOrderDetailRecord(i);
+//          ObservableList.add("No."+doc.getDtb_id()+" CustomerId : "+doc.getDtb_customerId()+"  Date : "+doc.getDtb_date());
+
+            ObservableList.add(order.toCsv());
+        }
+        orderListview.setItems(ObservableList);
     }
 
     @FXML

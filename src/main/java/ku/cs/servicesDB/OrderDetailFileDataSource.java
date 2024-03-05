@@ -1,24 +1,23 @@
 package ku.cs.servicesDB;
 
-import ku.cs.models.Menu;
-import ku.cs.models.MenuList;
-import ku.cs.models.OrderDetailList;
+
+import ku.cs.models.*;
 
 import java.io.*;
 
-public class MenuFileDataSource implements DataSource<MenuList>{
+public class OrderDetailFileDataSource implements DataSource<OrderDetailList>{
     private String directoryName;
     private String filename;
 
-    private MenuList menus= new MenuList();
+    private OrderDetailList orders= new OrderDetailList();
 
-    public MenuFileDataSource() {
-        this("Data_csv","Menus.csv");
+    public OrderDetailFileDataSource() {
+        this("Data_csv","OrderALL.csv");
     }
 
 
-    //for test
-    public MenuFileDataSource(String directoryName, String filename) {
+    //for test --> OrderNow.CSV
+    public OrderDetailFileDataSource(String directoryName, String filename) {
         this.directoryName = directoryName;
         this.filename = filename;
         initialFileNotExist();
@@ -45,7 +44,7 @@ public class MenuFileDataSource implements DataSource<MenuList>{
     }
 
     @Override
-    public void writeData(MenuList menuList) {
+    public void writeData(OrderDetailList orders) {
         //วีธีการเขียน สมมติว่า รับ AccountList มา --> เราจะเขียนข้อมูลทั้งหมด ใน AccountList เลย
 
         String path = directoryName + File.separator + filename;
@@ -59,7 +58,7 @@ public class MenuFileDataSource implements DataSource<MenuList>{
             writer = new FileWriter(file);
             buffer = new BufferedWriter(writer);
 
-            buffer.write(menuList.toCsv());
+            buffer.write(orders.toCsv());
 
 
         } catch (IOException e) {
@@ -75,9 +74,10 @@ public class MenuFileDataSource implements DataSource<MenuList>{
 
     }
 
+
     @Override
-    public MenuList readData(String directoryName, String fileName) {
-        String path = "Data" + File.separator + "Products.csv";
+    public OrderDetailList readData(String directoryName, String filename) {
+        String path = directoryName + File.separator + filename;
         File file = new File(path);
 
         FileReader reader = null;
@@ -90,16 +90,20 @@ public class MenuFileDataSource implements DataSource<MenuList>{
             String line = "";
             while ( (line = buffer.readLine() ) != null ) {
                 String[] data = line.split(",");
-                // Menu(0:String mn_Id, 1:String mn_name, 2:Float mn_price,
-                // 3:String mn_img, 4:String mn_status, 5:String mn_option, 6:String m_type)
-                menus.addMenu(new Menu(
+                //Order Detail
+                // [1] o_Id , [2] o_receiptId, [3] o_mnId, [4] o_mnName
+                // [5] o_amount, [6] o_priceTotal [7] o_priceByUnit [8] o_sweet
+                // [9] o_milk
+                orders.addOrder(new OrderDetail(
                         data[0],
                         data[1],
-                        (float) Double.parseDouble(data[2]),
+                        data[2],
                         data[3],
-                        data[4],
-                        data[5],
-                        data[6]
+                        Integer.valueOf(data[4]),
+                        Float.valueOf(data[5]),
+                        Float.valueOf(data[6]),
+                        data[7],
+                        data[8]
 
                 ));
 //                if(type.equals("Seller")){
@@ -122,10 +126,30 @@ public class MenuFileDataSource implements DataSource<MenuList>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return menus;
+        return orders;
     }
 
-
     // menus จากที่อ่าน file
-    public MenuList getAllMenuListDataSource() { return menus;}
+    public OrderDetailList getAllOrderDetailListDataSource() { return orders;}
+
+    public void clearData() {
+        String path = directoryName + File.separator + filename;
+        File file = new File(path);
+
+        // Check if the file exists before clearing
+        if (file.exists()) {
+            try {
+                // Delete the existing file
+                file.delete();
+
+                // Recreate an empty file
+                file.createNewFile();
+
+                // Clear the in-memory list (optional)
+                orders.clear();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
