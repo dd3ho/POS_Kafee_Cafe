@@ -42,7 +42,7 @@
                                     <HBox prefHeight="30.0" prefWidth="142.0">
                                        <children>
                                           <VBox prefHeight="31.0" prefWidth="0.0" />
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="0.0" style="-fx-background-radius: 30; -fx-background-color: #ffffff;" text="-" textFill="#050505">
+                                          <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleMinusButton" prefHeight="31.0" prefWidth="0.0" style="-fx-background-radius: 30; -fx-background-color: #ffffff;" text="-" textFill="#050505">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -56,14 +56,14 @@
                                           </Button>
                                           <VBox prefHeight="51.0" prefWidth="124.0">
                                              <children>
-                                                <Label fx:id="amountLabel1" alignment="CENTER" prefHeight="52.0" prefWidth="141.0" text="amountLabel" textFill="#545454">
+                                                <Label fx:id="amountLabel" alignment="CENTER" prefHeight="52.0" prefWidth="141.0" text="amountLabel" textFill="#545454">
                                                    <font>
                                                       <Font name="Cambria Bold" size="18.0" />
                                                    </font>
                                                 </Label>
                                              </children>
                                           </VBox>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="31.0" prefWidth="0.0" style="-fx-background-radius: 30; -fx-background-color: #ffffff;" text="+" textFill="#121212">
+                                          <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlusButton" prefHeight="31.0" prefWidth="0.0" style="-fx-background-radius: 30; -fx-background-color: #ffffff;" text="+" textFill="#121212">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -103,13 +103,13 @@
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox prefHeight="22.0" prefWidth="150.0" />
+                                    <ChoiceBox fx:id="sweetnessChoiceBox" prefHeight="22.0" prefWidth="150.0" />
                                     <Label alignment="CENTER" prefHeight="50.0" prefWidth="67.0" text="Milk: " textFill="#545454">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <ChoiceBox prefHeight="22.0" prefWidth="153.0" />
+                                    <ChoiceBox fx:id="milkChoiceBox" prefHeight="22.0" prefWidth="153.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -135,7 +135,7 @@
                                        </font>
                                     </Label>
                                     <HBox prefHeight="30.0" prefWidth="0.0" />
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBuyNowButton" prefHeight="38.0" prefWidth="57.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="ADD" textFill="#fbfdf4">
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="38.0" prefWidth="57.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="ADD" textFill="#fbfdf4">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
@@ -158,13 +158,13 @@
                         <HBox prefHeight="23.0" prefWidth="330.0" />
                         <HBox prefHeight="20.0" prefWidth="310.0">
                            <children>
-                              <Label fx:id="productDetailLabel11" alignment="CENTER" prefHeight="22.0" prefWidth="76.0" text="Detail" textFill="#545454">
+                              <Label alignment="CENTER" prefHeight="22.0" prefWidth="76.0" text="Detail" textFill="#545454">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
                               <VBox prefHeight="22.0" prefWidth="32.0" />
-                              <Label fx:id="productDetailLabel111" alignment="CENTER" prefHeight="34.0" prefWidth="114.0" textFill="#545454">
+                              <Label alignment="CENTER" prefHeight="34.0" prefWidth="114.0" textFill="#545454">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
@@ -173,38 +173,38 @@
                         </HBox>
                         <HBox prefHeight="55.0" prefWidth="310.0">
                            <children>
-                              <TextField prefHeight="55.0" prefWidth="336.0" />
+                              <TextField fx:id="detailTextField" prefHeight="55.0" prefWidth="336.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="15.0" prefWidth="330.0" />
                         <HBox prefHeight="20.0" prefWidth="310.0">
                            <children>
-                              <Label fx:id="productDetailLabel1111" alignment="CENTER" prefHeight="45.0" prefWidth="104.0" text="Total Price" textFill="#545454">
+                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="104.0" text="Total Price" textFill="#545454">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="productDetailLabel1112" alignment="CENTER" prefHeight="42.0" prefWidth="34.0" textFill="#545454">
+                              <Label alignment="CENTER" prefHeight="42.0" prefWidth="34.0" textFill="#545454">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="productDetailLabel11111" alignment="CENTER" prefHeight="45.0" prefWidth="84.0" text="totalLabel" textFill="#545454">
+                              <Label fx:id="totalLabel" alignment="CENTER" prefHeight="45.0" prefWidth="84.0" text="totalLabel" textFill="#545454">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="productDetailLabel11121" alignment="CENTER" prefHeight="42.0" prefWidth="21.0" textFill="#545454">
+                              <Label alignment="CENTER" prefHeight="42.0" prefWidth="21.0" textFill="#545454">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="productDetailLabel111211" alignment="CENTER" prefHeight="27.0" prefWidth="30.0" textFill="#545454">
+                              <Label alignment="CENTER" prefHeight="27.0" prefWidth="30.0" textFill="#545454">
                                  <font>
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBuyNowButton" prefHeight="27.0" prefWidth="53.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="Order" textAlignment="RIGHT" textFill="#fbfdf4">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOrderButton" prefHeight="27.0" prefWidth="53.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="Order" textAlignment="RIGHT" textFill="#fbfdf4">
                                  <font>
                                     <Font size="13.0" />
                                  </font>

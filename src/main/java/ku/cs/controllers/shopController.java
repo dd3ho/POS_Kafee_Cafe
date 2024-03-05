@@ -5,9 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -36,8 +34,6 @@ public class shopController {
     @FXML
     private GridPane grid;
 
-    @FXML
-    private TextField amountTextField;
 
     @FXML
     private Label nameLabel;
@@ -45,8 +41,6 @@ public class shopController {
     @FXML
     private Label priceLabel;
 
-    @FXML
-    private Label productDetailLabel;
 
     @FXML
     private ImageView productImageImageView;
@@ -55,7 +49,20 @@ public class shopController {
     private ScrollPane scroll;
 
     @FXML
-    private Label totalOrderLabel;
+    private Label totalLabel;
+
+    @FXML
+    private Label amountLabel;
+
+    @FXML
+    private ChoiceBox<String> milkChoiceBox;
+
+    @FXML
+    private ChoiceBox<String> sweetnessChoiceBox;
+
+    @FXML
+    private TextField detailTextField;
+
 
 
     //prepare data
@@ -70,15 +77,22 @@ public class shopController {
     @FXML
     public void initialize() {
         clearTextField();
+        setItem();
+        showProduct();
+    }
+    private void setItem(){
+        // set DB
         databaseMenu = new Menu_DBConnection();
         menuList = new MenuList();
-        String query = "SELECT * FROM menu";
+        String query = "SELECT * FROM menu WHERE mn_status = 'sell'";
         menuList = databaseMenu.readDatabase(query);
 
         // เพิ่มข้อมูลจาก menuList เข้าไปใน menusStock โดยไม่ต้องทำการแปลงชนิดข้อมูล
         menusStock.addAll(menuList.getMenuList());
 
-        showProduct();
+        //set choice box
+        milkChoiceBox.getItems().addAll("Fresh Milk", "Almond Milk", "Oat Milk", "None");
+        sweetnessChoiceBox.getItems().addAll("No Sweet ", "Less Sweet", "Extra Sweet");
     }
 
     private void showProduct() {
@@ -130,6 +144,7 @@ public class shopController {
     }
 
     private void clearText() {
+        amountLabel.setText("0");
     }
 
     private void setChosenProductCardVBox(Menu menu){
@@ -168,6 +183,11 @@ public class shopController {
     }
 
     private void clearTextField() {
+        nameLabel.setText("");
+        priceLabel.setText("");
+        amountLabel.setText("0");
+        detailTextField.setText("");
+        productImageImageView.setImage(null);
     }
 
     @FXML
@@ -177,11 +197,6 @@ public class shopController {
 
     @FXML
     void handleBackToStaffButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleBuyNowButton(ActionEvent event) {
 
     }
 
@@ -196,7 +211,35 @@ public class shopController {
     }
 
     @FXML
+    void handleMinusButton(ActionEvent event) {
+        int currentAmount = Integer.parseInt(amountLabel.getText());
+        if (currentAmount <= 0) {
+            // แสดงข้อความแจ้งเตือน "จำนวนไม่สามารถติดลบได้"
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("error");
+            alert.setHeaderText(null);
+            alert.setContentText("Oder ไม่สามารถติดลบได้");
+            alert.showAndWait();
+        } else {
+            currentAmount--;
+            amountLabel.setText(String.valueOf(currentAmount));
+        }
+    }
+
+    @FXML
+    void handleOrderButton(ActionEvent event) {
+
+    }
+
+    @FXML
     void handleOtherButton(ActionEvent event) {
 
+    }
+
+    @FXML
+    void handlePlusButton(ActionEvent event) {
+        int currentAmount = Integer.parseInt(amountLabel.getText());
+        currentAmount++;  // Increment the amount
+        amountLabel.setText(String.valueOf(currentAmount));  // Update the label
     }
 }
