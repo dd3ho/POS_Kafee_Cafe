@@ -1,7 +1,8 @@
 package ku.cs.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import ku.cs.App;
 import ku.cs.models.*;
 import ku.cs.models.Menu;
 import ku.cs.servicesDB.*;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,6 +81,7 @@ public class shopController {
     // Listview
     private javafx.collections.ObservableList<String> ObservableList;
     private OrderDetailList orderNowList = new OrderDetailList();
+    private String selectItem;
 
 
     @FXML
@@ -86,6 +89,7 @@ public class shopController {
         clearTextField();
         setItem();
         showProduct();
+        handleOrderInListviewSelected();
     }
     private void setItem(){
         // set DB
@@ -211,10 +215,11 @@ public class shopController {
         // [1] o_Id , [2] o_receiptId, [3] o_mnId, [4] o_mnName
         // [5] o_amount, [6] o_priceTotal [7] o_priceByUnit [8] o_sweet
         // [9] o_milk
-        System.out.println("orderList");
-        System.out.println(orders.toCsv());
-        System.out.println("MenuOrder");
-        System.out.println(menuOrder.toCsv());
+
+//        System.out.println("orderList");
+//        System.out.println(orders.toCsv());
+//        System.out.println("MenuOrder");
+//        System.out.println(menuOrder.toCsv());
         orders.addOrder(new OrderDetail(
                 "none",
                 "none",
@@ -232,6 +237,7 @@ public class shopController {
 
     }
     private void showListView(OrderDetailList orders) {
+        // EmpPayDebtController.java
         ObservableList = FXCollections.observableArrayList();
         orderNowList = orders;
         for(int i = orderNowList.countElement()-1; i>=0; i--)
@@ -243,6 +249,67 @@ public class shopController {
         }
         orderListview.setItems(ObservableList);
     }
+    private void handleOrderInListviewSelected() {
+        System.out.println("เข้า");
+        orderListview.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    System.out.println("เข้า1");
+                    if (newValue != null) { // Check for a valid selection
+                        // Ensure newValue is an OrderDetail object (not a String)
+
+                        String selectedOrder =  newValue;
+
+                        String id = selectedOrder; // Get the ID from the OrderDetail object
+//                        System.out.println("show selected");
+//                        System.out.println(id);
+                        selectItem = id;
+
+                        // Process the selected order's ID (e.g., call showSelectedCustomer)
+                        // showSelectedCustomer(id);
+                    } else {
+                        // Handle the case where no item is selected (e.g., display a message)
+                        System.out.println("No item selected");
+                        selectItem = "No item selected";
+                    }
+                });
+    }
+
+    @FXML
+    void handleDeleteButton(ActionEvent event) {
+        if (selectItem.equals("No item selected")) {
+            System.out.println("No item selected for delete");
+        } else {
+//            String selectItem = "none,none,mn001,ลาเต้,1,0.0,60.0,Less Sweet,Almond Milk";
+
+            String[] splitted = selectItem.split(",");
+
+//            for (String s : splitted) {
+//                System.out.println(s);
+//            }
+            // ค้นหา OrderDetail ใน OrderDetailList โดยใช้ selectItem ซึ่งก็คือ ID
+            OrderDetail toDelete = null;
+            for (OrderDetail order : orderNowList.getOrderDetailList()) {
+                if (order.getO_mnName().equals(splitted[3]) && order.getO_amount() == Integer.parseInt(splitted[4])) {
+                    toDelete = order;
+                    break;
+                }
+            }
+
+//             ถ้าเราหาเจอ OrderDetail ที่ต้องการลบ เราจะลบมันออกจาก OrderDetailList
+            if (toDelete != null) {
+                orderNowList.removeOrder(toDelete);
+                DataSource<OrderDetailList> dataSource = new OrderDetailFileDataSource("data", "ordersNow.csv");
+                dataSource.writeData(orderNowList); // เขียนข้อมูลที่อัพเดทไปยังไฟล์
+                showListView(orderNowList); // แสดง ListView ที่อัพเดทแล้ว
+                System.out.println("Deleted: " + selectItem);
+            } else {
+                System.out.println("Item to delete not found");
+            }
+        }
+    }
+
+
+
 
     @FXML
     void handleBackToStaffButton(ActionEvent event) {

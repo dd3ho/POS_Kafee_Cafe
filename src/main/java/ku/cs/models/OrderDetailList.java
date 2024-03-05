@@ -39,4 +39,7 @@ public class OrderDetailList {
         OrderDetail orderDetail = orders.get(i);
         return orderDetail;
     }
+    public boolean removeOrder(OrderDetail order) {
+        return orders.remove(order);
+    }
 }

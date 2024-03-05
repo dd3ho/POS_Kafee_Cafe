@@ -119,17 +119,17 @@
                            <children>
                               <HBox prefHeight="24.0" prefWidth="330.0">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="30.0" prefWidth="22.0" textFill="#545454">
+                                    <Label fx:id="nameLabel" prefHeight="27.0" prefWidth="184.0" text="Name" textFill="#545454">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="nameLabel" prefHeight="38.0" prefWidth="140.0" text="Name" textFill="#545454">
+                                    <Label alignment="CENTER" prefHeight="27.0" prefWidth="13.0" textFill="#545454">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="priceLabel" alignment="CENTER" prefHeight="69.0" prefWidth="112.0" text="Price" textFill="#545454">
+                                    <Label fx:id="priceLabel" alignment="CENTER" prefHeight="27.0" prefWidth="78.0" text="Price" textFill="#545454">
                                        <font>
                                           <Font name="Cambria Bold" size="18.0" />
                                        </font>
@@ -155,7 +155,22 @@
                            <children>
                               <ListView fx:id="orderListview" prefHeight="85.0" prefWidth="330.0" />
                            </children></HBox>
-                        <HBox prefHeight="23.0" prefWidth="330.0" />
+                        <HBox prefHeight="23.0" prefWidth="330.0">
+                           <children>
+                              <AnchorPane prefHeight="27.0" prefWidth="273.0" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="38.0" prefWidth="57.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="Delete" textFill="#fbfdf4">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow offsetX="2.0" offsetY="2.0">
+                                       <color>
+                                          <Color red="0.3294117748737335" green="0.3294117748737335" blue="0.3294117748737335" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Button>
+                           </children></HBox>
                         <HBox prefHeight="20.0" prefWidth="310.0">
                            <children>
                               <Label alignment="CENTER" prefHeight="22.0" prefWidth="76.0" text="Detail" textFill="#545454">
