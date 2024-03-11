@@ -16,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import ku.cs.App;
+import ku.cs.FXRouter;
 import ku.cs.models.*;
 import ku.cs.models.Menu;
 import ku.cs.servicesDB.*;
@@ -83,6 +84,9 @@ public class shopController {
     private OrderDetailList orderNowList = new OrderDetailList();
     private String selectItem;
 
+    //data for sum totalPriceInListview
+    private float totalPriceOrder;
+
 
     @FXML
     public void initialize() {
@@ -102,12 +106,15 @@ public class shopController {
 
         // This will clear the data in the "data/orders.csv" file
         OrderDetailFileDataSource dataSourceOrderNow = new OrderDetailFileDataSource("data", "OrdersNow.csv");
-        dataSourceOrderNow.clearData();
+        dataSourceOrderNow.clearData(); //delete all record in csv
 
 
         //set choice box
         milkChoiceBox.getItems().addAll("Fresh Milk", "Almond Milk", "Oat Milk", "None");
-        sweetnessChoiceBox.getItems().addAll("No Sweet ", "Less Sweet", "Extra Sweet");
+        sweetnessChoiceBox.getItems().addAll("No Sweet ", "Less Sweet", "Normal Sweet", "Extra Sweet");
+        //set text
+        totalLabel.setText("0");
+
     }
 
     private void showProduct() {
@@ -204,6 +211,9 @@ public class shopController {
         amountLabel.setText("0");
         detailTextField.setText("");
         productImageImageView.setImage(null);
+        milkChoiceBox.setValue(null);
+        sweetnessChoiceBox.setValue(null);
+
     }
 
     @FXML
@@ -226,14 +236,20 @@ public class shopController {
                 menuOrder.getMn_Id(),
                 menuOrder.getMn_name(),
                 Integer.parseInt(amountLabel.getText()),
-                0,
+                Integer.parseInt(amountLabel.getText())*menuOrder.getMn_price(),
                 menuOrder.getMn_price(),
                 sweetnessChoiceBox.getValue(),
-                milkChoiceBox.getValue()));
+                milkChoiceBox.getValue(),
+                detailTextField.getText()
+
+        ));
         dataSource.writeData(orders);
         showListView(orders);
+        totalPriceOrder += Integer.parseInt(amountLabel.getText())*menuOrder.getMn_price();
+        totalLabel.setText(String.valueOf(totalPriceOrder));
+        // clearText
+        clearTextField();
 
-        //set Listview
 
     }
     private void showListView(OrderDetailList orders) {
@@ -313,7 +329,12 @@ public class shopController {
 
     @FXML
     void handleBackToStaffButton(ActionEvent event) {
-
+        try {
+            FXRouter.goTo("pos_staff_menu");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า pos_staff_menu ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
     }
 
     @FXML
@@ -325,6 +346,12 @@ public class shopController {
     void handleDrinkTypeButton(ActionEvent event) {
 
     }
+
+    @FXML
+    void handleOtherButton(ActionEvent event) {
+
+    }
+
 
     @FXML
     void handleMinusButton(ActionEvent event) {
@@ -343,19 +370,20 @@ public class shopController {
     }
 
     @FXML
-    void handleOrderButton(ActionEvent event) {
-
-    }
-
-    @FXML
-    void handleOtherButton(ActionEvent event) {
-
-    }
-
-    @FXML
     void handlePlusButton(ActionEvent event) {
         int currentAmount = Integer.parseInt(amountLabel.getText());
         currentAmount++;  // Increment the amount
         amountLabel.setText(String.valueOf(currentAmount));  // Update the label
+    }
+
+    @FXML
+    void handleOrderButton(ActionEvent event) {
+        try {
+            FXRouter.goTo("pos_staff_purchase_order");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า pos_staff_purchase_order ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
+
     }
 }

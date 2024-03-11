@@ -30,7 +30,7 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
             System.out.println("Connection is created successfully:");
             stmt = (Statement) conn.createStatement();
             String query1 = "INSERT INTO order_deatail " + "VALUES ('" + order_detail.getO_Id() + "','" + order_detail.getO_receiptId() + "','" + order_detail.getO_mnId() + "','" + order_detail.getO_mnName() + "','" + order_detail.getO_amount() + "','" + order_detail.getO_priceTotal() +
-                    "','" + order_detail.getO_priceByUnit() + "','" + order_detail.getO_sweet() + "','" + order_detail.getO_milk() + "')";
+                    "','" + order_detail.getO_priceByUnit() + "','" + order_detail.getO_sweet() + "','" + order_detail.getO_milk() +"','" + order_detail.getO_detail() + "')";
             stmt.executeUpdate(query1);
             System.out.println("Record is inserted in the table successfully..................");
         } catch (Exception excep) {
@@ -77,10 +77,11 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
                 float o_priceByUnit = Float.parseFloat(rs.getNString(7));
                 String o_sweet = rs.getString(8);
                 String o_milk = rs.getString(9);
+                String o_detail = rs.getString(10);
 
 
                 this.orderRecord = new OrderDetail(o_Id, o_receiptId, o_mnId,
-                        o_mnName, o_amount, o_priceTotal, o_priceByUnit, o_sweet, o_milk);
+                        o_mnName, o_amount, o_priceTotal, o_priceByUnit, o_sweet, o_milk, o_detail);
 //                System.out.println(empLoginAccount.toCsv());
             }
             System.out.println("receiptRecord can use from jdbc");
@@ -130,10 +131,11 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
                 float o_priceByUnit = Float.parseFloat(rs.getNString(7));
                 String o_sweet = rs.getString(8);
                 String o_milk = rs.getString(9);
+                String o_detail = rs.getString(10);
 
 
                 this.orderRecord = new OrderDetail(o_Id, o_receiptId, o_mnId,
-                        o_mnName, o_amount, o_priceTotal, o_priceByUnit, o_sweet, o_milk);
+                        o_mnName, o_amount, o_priceTotal, o_priceByUnit, o_sweet, o_milk, o_detail);
                 list.addOrder(orderRecord);
 //                System.out.println(empLoginAccount.toCsv());
             }

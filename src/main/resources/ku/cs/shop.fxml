@@ -135,29 +135,60 @@
                                        </font>
                                     </Label>
                                     <HBox prefHeight="30.0" prefWidth="0.0" />
-                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="38.0" prefWidth="57.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="ADD" textFill="#fbfdf4">
-                                       <font>
-                                          <Font size="13.0" />
-                                       </font>
-                                       <effect>
-                                          <DropShadow offsetX="2.0" offsetY="2.0">
-                                             <color>
-                                                <Color red="0.3294117748737335" green="0.3294117748737335" blue="0.3294117748737335" />
-                                             </color>
-                                          </DropShadow>
-                                       </effect>
-                                    </Button>
                                  </children>
                               </HBox>
                            </children></HBox>
                         <HBox prefHeight="21.0" prefWidth="330.0" />
-                        <HBox prefHeight="70.0" prefWidth="330.0">
+                        <HBox prefHeight="66.0" prefWidth="330.0" />
+                        <HBox prefHeight="16.0" prefWidth="330.0">
                            <children>
-                              <ListView fx:id="orderListview" prefHeight="85.0" prefWidth="330.0" />
+                              <Label prefHeight="12.0" prefWidth="270.0" text="Detail" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
                            </children></HBox>
-                        <HBox prefHeight="23.0" prefWidth="330.0">
+                        <TextField fx:id="detailTextField" prefHeight="58.0" prefWidth="330.0" />
+                        <HBox prefHeight="54.0" prefWidth="330.0" />
+                        <HBox prefHeight="36.0" prefWidth="330.0">
                            <children>
-                              <AnchorPane prefHeight="27.0" prefWidth="273.0" />
+                              <Label prefHeight="27.0" prefWidth="269.0" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="38.0" prefWidth="57.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="ADD" textFill="#fbfdf4">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow offsetX="2.0" offsetY="2.0">
+                                       <color>
+                                          <Color red="0.3294117748737335" green="0.3294117748737335" blue="0.3294117748737335" />
+                                       </color>
+                                    </DropShadow>
+                                 </effect>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="49.0" prefWidth="330.0">
+                           <children>
+                              <Label prefHeight="27.0" prefWidth="269.0" text="List of Oders" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <ListView fx:id="orderListview" prefHeight="93.0" prefWidth="330.0" />
+                        <HBox prefHeight="53.0" prefWidth="330.0" />
+                        <HBox prefHeight="50.0" prefWidth="330.0">
+                           <children>
+                              <Label prefHeight="65.0" prefWidth="270.0" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria Bold" size="18.0" />
+                                 </font>
+                              </Label>
                               <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleDeleteButton" prefHeight="38.0" prefWidth="57.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="Delete" textFill="#fbfdf4">
                                  <font>
                                     <Font size="13.0" />
@@ -170,28 +201,15 @@
                                     </DropShadow>
                                  </effect>
                               </Button>
-                           </children></HBox>
-                        <HBox prefHeight="20.0" prefWidth="310.0">
-                           <children>
-                              <Label alignment="CENTER" prefHeight="22.0" prefWidth="76.0" text="Detail" textFill="#545454">
-                                 <font>
-                                    <Font name="Cambria Bold" size="18.0" />
-                                 </font>
-                              </Label>
-                              <VBox prefHeight="22.0" prefWidth="32.0" />
-                              <Label alignment="CENTER" prefHeight="34.0" prefWidth="114.0" textFill="#545454">
-                                 <font>
-                                    <Font name="Cambria Bold" size="18.0" />
-                                 </font>
-                              </Label>
                            </children>
                         </HBox>
-                        <HBox prefHeight="55.0" prefWidth="310.0">
+                        <HBox prefHeight="80.0" prefWidth="330.0" />
+                        <HBox prefHeight="23.0" prefWidth="330.0">
                            <children>
-                              <TextField fx:id="detailTextField" prefHeight="55.0" prefWidth="336.0" />
+                              <AnchorPane prefHeight="27.0" prefWidth="273.0" />
                            </children>
                         </HBox>
-                        <HBox prefHeight="15.0" prefWidth="330.0" />
+                        <HBox prefHeight="0.0" prefWidth="330.0" />
                         <HBox prefHeight="20.0" prefWidth="310.0">
                            <children>
                               <Label alignment="CENTER" prefHeight="45.0" prefWidth="104.0" text="Total Price" textFill="#545454">
@@ -219,7 +237,7 @@
                                     <Font name="Cambria Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOrderButton" prefHeight="27.0" prefWidth="53.0" style="-fx-background-radius: 30; -fx-background-color: #af5757;" text="Order" textAlignment="RIGHT" textFill="#fbfdf4">
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleOrderButton" prefHeight="27.0" prefWidth="53.0" style="-fx-background-radius: 0; -fx-background-color: #af5757;" text="Order" textAlignment="RIGHT" textFill="#fbfdf4">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
@@ -233,7 +251,8 @@
                               </Button>
                            </children>
                         </HBox>
-                        <HBox prefHeight="54.0" prefWidth="330.0" />
+                        <HBox prefHeight="46.0" prefWidth="330.0" />
+                        <HBox prefHeight="63.0" prefWidth="330.0" />
                      </children>
                   </VBox>
                </children>

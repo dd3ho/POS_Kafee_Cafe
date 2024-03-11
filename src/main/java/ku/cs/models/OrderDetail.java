@@ -13,7 +13,9 @@ public class OrderDetail {
     private String o_sweet;
     private String o_milk;
 
-    public OrderDetail(String o_Id, String o_receiptId, String o_mnId, String o_mnName, int o_amount, float o_priceTotal, float o_priceByUnit, String o_sweet, String o_milk) {
+    private String o_detail;
+
+    public OrderDetail(String o_Id, String o_receiptId, String o_mnId, String o_mnName, int o_amount, float o_priceTotal, float o_priceByUnit, String o_sweet, String o_milk, String o_detail) {
         this.o_Id = o_Id;
         this.o_receiptId = o_receiptId;
         this.o_mnId = o_mnId;
@@ -23,6 +25,7 @@ public class OrderDetail {
         this.o_priceByUnit = o_priceByUnit;
         this.o_sweet = o_sweet;
         this.o_milk = o_milk;
+        this.o_detail = o_detail;
     }
 
     public String getO_Id() {
@@ -61,6 +64,10 @@ public class OrderDetail {
         return o_milk;
     }
 
+    public String getO_detail() {
+        return o_detail;
+    }
+
     public void setO_Id(String o_Id) {
         this.o_Id = o_Id;
     }
@@ -97,15 +104,19 @@ public class OrderDetail {
         this.o_milk = o_milk;
     }
 
+    public void setO_detail(String o_detail) {
+        this.o_detail = o_detail;
+    }
+
     @Override
     public String toString() {
         return  o_Id + "," + o_receiptId + "," + o_mnId + "," + o_amount + "," +
-                o_priceTotal+ "," + o_priceByUnit + "," + o_sweet + "," + o_milk;
+                o_priceTotal+ "," + o_priceByUnit + "," + o_sweet + "," + o_milk+","+o_detail;
     }
 
     public String toCsv() {
         return o_Id + "," + o_receiptId + "," + o_mnId + "," + o_mnName + "," + o_amount + "," +
-                o_priceTotal+ "," + o_priceByUnit + "," + o_sweet + "," + o_milk;
+                o_priceTotal+ "," + o_priceByUnit + "," + o_sweet + "," + o_milk+","+o_detail;
     }
 
 }

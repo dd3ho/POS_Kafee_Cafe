@@ -93,7 +93,7 @@ public class OrderDetailFileDataSource implements DataSource<OrderDetailList>{
                 //Order Detail
                 // [1] o_Id , [2] o_receiptId, [3] o_mnId, [4] o_mnName
                 // [5] o_amount, [6] o_priceTotal [7] o_priceByUnit [8] o_sweet
-                // [9] o_milk
+                // [9] o_milk [10] o_detail
                 orders.addOrder(new OrderDetail(
                         data[0],
                         data[1],
@@ -103,7 +103,8 @@ public class OrderDetailFileDataSource implements DataSource<OrderDetailList>{
                         Float.valueOf(data[5]),
                         Float.valueOf(data[6]),
                         data[7],
-                        data[8]
+                        data[8],
+                        data[9]
 
                 ));
 //                if(type.equals("Seller")){

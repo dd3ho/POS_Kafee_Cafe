@@ -21,7 +21,7 @@ public class App extends Application {
         configRoute();
 
 
-        FXRouter.goTo("pos_admin_menu");
+        FXRouter.goTo("shop");
 
 
     }
@@ -49,7 +49,8 @@ public class App extends Application {
         FXRouter.when("pos_allMenu",packageStr+"pos_allMenu.fxml");
         FXRouter.when("shop",packageStr+"shop.fxml");
         FXRouter.when("pos_staff_menu",packageStr+"pos_staff_menu.fxml");
-
+        FXRouter.when("pos_staff_menu",packageStr+"pos_staff_menu.fxml");
+        FXRouter.when("pos_staff_purchase_order",packageStr+"pos_purchase_order.fxml");
 
 
         // old
