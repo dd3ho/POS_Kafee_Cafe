@@ -1,11 +1,14 @@
 package ku.cs.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import ku.cs.FXRouter;
 import ku.cs.models.Menu;
 import ku.cs.models.MenuList;
 import ku.cs.servicesDB.Database;
@@ -22,6 +25,13 @@ public class AllMenuController {
 
     @FXML
     private GridPane dessertGridPane;
+
+    @FXML
+    private Button addDrinkBtn;
+
+    @FXML
+    private Button addDessertBtn;
+
     Database<Menu, MenuList> drinkData;
 
     Database<Menu, MenuList> dessertData;
@@ -96,9 +106,13 @@ public class AllMenuController {
             e.printStackTrace();
         }
     }
-
-    private void setChosenMenu(Menu menu) {
-        menuItem = menu;
+    @FXML
+    private void handleBtn(ActionEvent event) throws IOException {
+        if(event.getSource() == addDrinkBtn) {
+            FXRouter.goTo("pos_addDrink");
+        } else if (event.getSource() == addDessertBtn) {
+            FXRouter.goTo("pos_addDessert");
+        }
     }
 }
 
