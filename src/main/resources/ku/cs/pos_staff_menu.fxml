@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="659.0" style="-fx-background-color: f1e1d8;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.EditPromotionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="659.0" style="-fx-background-color: f1e1d8;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.StaffMenuController">
    <children>
-      <Button layoutX="113.0" layoutY="233.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #845b44;" text="ลงทะเบียนสมาชิก" textFill="WHITE">
+      <Button layoutX="113.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleSignupBtn" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #845b44;" text="ลงทะเบียนสมาชิก" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
@@ -20,7 +20,7 @@
             <Image url="@../../image/ดีไซน์ที่ยังไม่ได้ตั้งชื่อ%20(23).png" />
          </image>
       </ImageView>
-      <Button layoutX="412.0" layoutY="233.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: #845b44;" text="เพิ่มคำสั่งซื้อ" textFill="WHITE">
+      <Button layoutX="412.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleAddOrderBtn" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: #845b44;" text="เพิ่มคำสั่งซื้อ" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
