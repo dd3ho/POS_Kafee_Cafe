@@ -114,7 +114,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <HBox prefHeight="36.0" prefWidth="330.0" />
+                        <HBox prefHeight="66.0" prefWidth="330.0" />
                         <HBox prefHeight="13.0" prefWidth="310.0">
                            <children>
                               <HBox prefHeight="24.0" prefWidth="330.0">
@@ -203,7 +203,7 @@
                               </Button>
                            </children>
                         </HBox>
-                        <HBox prefHeight="80.0" prefWidth="330.0" />
+                        <HBox prefHeight="62.0" prefWidth="330.0" />
                         <HBox prefHeight="23.0" prefWidth="330.0">
                            <children>
                               <AnchorPane prefHeight="27.0" prefWidth="273.0" />
