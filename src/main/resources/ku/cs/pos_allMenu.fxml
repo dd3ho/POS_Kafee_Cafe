@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="659.0" style="-fx-background-color: f1e1d8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.AllMenuController">
+   <children>
+      <BorderPane layoutY="-6.0" prefHeight="478.0" prefWidth="659.0">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="73.0" prefWidth="659.0">
+                     <children>
+                        <HBox prefHeight="73.0" prefWidth="217.0" />
+                        <Label alignment="CENTER" prefHeight="73.0" prefWidth="222.0" text="All Menu" textAlignment="CENTER" textFill="#845b44">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="36.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="186.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="190.0" prefWidth="659.0">
+                     <children>
+                        <VBox prefHeight="193.0" prefWidth="20.0" />
+                        <VBox prefHeight="164.0" prefWidth="646.0">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="89.0" text="Drink" textFill="#845b44">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane prefHeight="167.0" prefWidth="646.0">
+                                 <content>
+                                    <GridPane fx:id="drinkGridPane" prefHeight="162.0" prefWidth="628.0">
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="190.0" prefWidth="659.0">
+                     <children>
+                        <VBox prefHeight="192.0" prefWidth="20.0" />
+                        <VBox prefHeight="192.0" prefWidth="643.0">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="102.0" text="Dessert" textFill="#845b44">
+                                 <font>
+                                    <Font name="Arial Rounded MT Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                 <content>
+                                    <GridPane fx:id="dessertGridPane" prefHeight="167.0" prefWidth="626.0">
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

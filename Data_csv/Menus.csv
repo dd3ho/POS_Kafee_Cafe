@@ -1,9 +1,11 @@
-mn001,ลาเต้,60.0,menu_photo/9d2ac4227058f44cc63c392f2161b8d8.jpg,sell,normal,null
-mn002,ชาเขียวมัทฉะกรีนที,65.0,9d2ac4227058f44cc63c392f2161b8d8.jpg,sell,extra,null
-mn003,โกโก้,60.0,9d2ac4227058f44cc63c392f2161b8d8.jpg,closed,normal,null
-mn004,latte,60.0,9d2ac4227058f44cc63c392f2161b8d8.jpg,sell,less,drink
-mn005,cake,45.0,9d2ac4227058f44cc63c392f2161b8d8.jpg,sell,less,dessert
-mn006,ชาไทย,60.0,9d2ac4227058f44cc63c392f2161b8d8.jpg,sell,no,fresh,drink
-mn007,cake1,150.0,9d2ac4227058f44cc63c392f2161b8d8.jpg,sell,extra,dessert
-mn008,photo1,15000.0,menu_photo/wallpaperflare.com_wallpaper (1).jpg,sell,no,almond,drink
-mn009,testDrink002,200.0,menu_photo/wallpaperflare.com_wallpaper (1).jpg,sell,no,almond,drink
+mn001,ลาเต้,60.0,imagemenu1,sell,normal,null
+mn002,ชาเขียวมัทฉะกรีนที,65.0,imagemenu2,sell,extra,null
+mn003,โกโก้,60.0,imagemenu3,closed,normal,null
+mn004,latte,60.0,wallpaperflare.com_wallpaper (1).jpg,sell,less,drink
+mn005,cake,45.0,test,sell,less,dessert
+mn006,ชาไทย,60.0,wallpaperflare.com_wallpaper (1).jpg,sell,no,fresh,drink
+mn007,tttt,14.0,wallpaperflare.com_wallpaper (1).jpg,sell,,,drink
+mn008,t,45.0,Screenshot 2023-03-31 162419.png,sell,normal,dessert
+mn009,test,45.0,Screenshot 2023-03-31 162419.png,sell,normal,dessert
+mn010,test all menu,125.0,prx.png,sell,,,drink
+mn011,t,12.0,menu_photo/prx.png,sell,,,drink
