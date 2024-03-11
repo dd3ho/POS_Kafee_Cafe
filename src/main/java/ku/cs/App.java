@@ -21,7 +21,7 @@ public class App extends Application {
         configRoute();
 
 
-        FXRouter.goTo("pos_admin_menu");
+        FXRouter.goTo("pos_allMenu");
 
 
     }

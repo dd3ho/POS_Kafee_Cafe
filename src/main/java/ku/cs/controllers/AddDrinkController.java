@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import ku.cs.FXRouter;
 import ku.cs.models.Menu;
 import ku.cs.models.MenuList;
 import ku.cs.models.User;
@@ -157,6 +158,7 @@ public class AddDrinkController {
         menu.setMn_status("sell");
         menu.setMn_option(sweet + "," + milk);
         menu.setMn_img("menu_photo/"+ imageName);
+        //FXRouter.goTo("pos_allMenu");
 
         if (nameField.equals("") || priceField.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
