@@ -104,9 +104,19 @@ public class shopController {
         // เพิ่มข้อมูลจาก menuList เข้าไปใน menusStock โดยไม่ต้องทำการแปลงชนิดข้อมูล
         menusStock.addAll(menuList.getMenuList());
 
-        // This will clear the data in the "data/orders.csv" file
+        // This will clear the data in the "data/OrdersNow.csv" file
         OrderDetailFileDataSource dataSourceOrderNow = new OrderDetailFileDataSource("data", "OrdersNow.csv");
-        dataSourceOrderNow.clearData(); //delete all record in csv
+        dataSourceOrderNow.clearData(); // Delete the file first
+        OrderDetailList orders = new OrderDetailList(); // Create an empty list
+        dataSourceOrderNow.writeData(orders); // Write an empty list to the file
+
+        float total = 0;
+        for (OrderDetail order : orders.getOrderDetailList()) {
+            System.out.println("get-price");
+            total += order.getO_priceTotal();
+        }
+        totalLabel.setText(String.valueOf(total));
+
 
 
         //set choice box
@@ -230,6 +240,12 @@ public class shopController {
 //        System.out.println(orders.toCsv());
 //        System.out.println("MenuOrder");
 //        System.out.println(menuOrder.toCsv());
+        String detail = detailTextField.getText();
+
+        if (detailTextField.getText().equals("")){
+            detail = "-";
+        }
+
         orders.addOrder(new OrderDetail(
                 "none",
                 "none",
@@ -240,7 +256,7 @@ public class shopController {
                 menuOrder.getMn_price(),
                 sweetnessChoiceBox.getValue(),
                 milkChoiceBox.getValue(),
-                detailTextField.getText()
+                detail
 
         ));
         dataSource.writeData(orders);
@@ -296,6 +312,7 @@ public class shopController {
             System.out.println("No item selected for delete");
         } else {
 //            String selectItem = "none,none,mn001,ลาเต้,1,0.0,60.0,Less Sweet,Almond Milk";
+//                                  [0] [1] ....
 
             String[] splitted = selectItem.split(",");
 
@@ -313,6 +330,13 @@ public class shopController {
 
 //             ถ้าเราหาเจอ OrderDetail ที่ต้องการลบ เราจะลบมันออกจาก OrderDetailList
             if (toDelete != null) {
+                // ลบราคาสินค้าออกจากราคาสรุป
+                if(totalPriceOrder>0){
+                    totalPriceOrder -= toDelete.getO_priceTotal();
+                }
+
+                totalLabel.setText(String.valueOf(totalPriceOrder));
+                // ลบสินค้า
                 orderNowList.removeOrder(toDelete);
                 DataSource<OrderDetailList> dataSource = new OrderDetailFileDataSource("data", "ordersNow.csv");
                 dataSource.writeData(orderNowList); // เขียนข้อมูลที่อัพเดทไปยังไฟล์
@@ -339,17 +363,46 @@ public class shopController {
 
     @FXML
     void handleDessertTypeButton(ActionEvent event) {
+        menusStock.clear();
+        // set DB
+        databaseMenu = new Menu_DBConnection();
+        menuList = new MenuList();
+
+        String query = "SELECT * FROM menu WHERE m_type = 'dessert' AND mn_status = 'sell' ";
+
+        menuList = databaseMenu.readDatabase(query);
+
+        System.out.println("MenuList From DB: "+menuList.toCsv());
+        // เพิ่มข้อมูลจาก menuList เข้าไปใน menusStock โดยไม่ต้องทำการแปลงชนิดข้อมูล
+        menusStock.addAll(menuList.getMenuList());
+        showProduct();
 
     }
 
     @FXML
     void handleDrinkTypeButton(ActionEvent event) {
-
+        menusStock.clear();
+        // set DB
+        databaseMenu = new Menu_DBConnection();
+        menuList = new MenuList();
+        String query = "SELECT * FROM menu WHERE m_type = 'drink' AND mn_status = 'sell' ";
+        menuList = databaseMenu.readDatabase(query);
+        System.out.println("MenuList From DB: "+menuList.toCsv());
+        menusStock.addAll(menuList.getMenuList());
+        showProduct();
     }
 
     @FXML
     void handleOtherButton(ActionEvent event) {
-
+        menusStock.clear();
+        // set DB
+        databaseMenu = new Menu_DBConnection();
+        menuList = new MenuList();
+        String query = "SELECT * FROM menu WHERE mn_status = 'sell' ";
+        menuList = databaseMenu.readDatabase(query);
+        System.out.println("MenuList From DB: "+menuList.toCsv());
+        menusStock.addAll(menuList.getMenuList());
+        showProduct();
     }
 
 

@@ -3,13 +3,11 @@ package ku.cs.controllers;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import ku.cs.FXRouter;
 import ku.cs.models.*;
 import ku.cs.servicesDB.DataSource;
-import ku.cs.servicesDB.Menu_DBConnection;
 import ku.cs.servicesDB.OrderDetailFileDataSource;
 
 import java.io.IOException;
@@ -17,13 +15,29 @@ import java.io.IOException;
 
 public class PurchaseOrderController {
     @FXML
+    private Label discountLabel;
+
+    @FXML
     private Label nameOfProductLabel;
+
+    @FXML
+    private Label orderIdLabel;
+
+    @FXML
+    private ListView<String> orderListview;
+
+    @FXML
+    private Label pointLabel;
+
+    @FXML
+    private Label subTotalLabel;
 
     @FXML
     private Label totalLabel;
 
-    @FXML
-    private ListView<String> orderListview;
+
+
+
     // Listview
     private javafx.collections.ObservableList<String> ObservableList;
     private OrderDetailList orderNowList = new OrderDetailList();
@@ -31,8 +45,16 @@ public class PurchaseOrderController {
 
     @FXML
     public void initialize() {
+        clearText();
         setItem();
-
+    }
+    private void clearText(){
+        discountLabel.setText("");
+        nameOfProductLabel.setText("");
+        orderIdLabel.setText("");
+        pointLabel.setText("");
+        subTotalLabel.setText("");
+        totalLabel.setText("");
     }
     private void setItem(){
         //เขียนอ่านไฟล์
@@ -47,6 +69,12 @@ public class PurchaseOrderController {
 //        System.out.println(orders.toCsv());
 //        System.out.println("MenuOrder");
 //        System.out.println(menuOrder.toCsv());
+        float total = 0;
+        for (OrderDetail order : orders.getOrderDetailList()) {
+            System.out.println("get-price");
+            total += order.getO_priceTotal();
+        }
+        subTotalLabel.setText(String.valueOf(total));
 
         showListView(orders);
 
@@ -67,6 +95,12 @@ public class PurchaseOrderController {
     }
     @FXML
     void handleBackToSellerButton(ActionEvent event) {
+        // This will clear the data in the "data/OrdersNow.csv" file
+        OrderDetailFileDataSource dataSourceOrderNow = new OrderDetailFileDataSource("data", "OrdersNow.csv");
+        dataSourceOrderNow.clearData(); // Delete the file first
+        OrderDetailList orders = new OrderDetailList(); // Create an empty list
+        dataSourceOrderNow.writeData(orders); // Write an empty list to the file
+
         //search username  return acc --> assign ค่า ให้ loginAccount ส่งกลับไปที่ system user
         try {
             FXRouter.goTo("shop");

@@ -29,6 +29,9 @@ public class MenuList {
     public List<Menu> getMenuList() {
         return menus;
     }
+    public void clear() {
+        menus.clear();
+    }
 
 
 }
