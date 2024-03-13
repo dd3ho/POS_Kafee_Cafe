@@ -38,9 +38,23 @@ public class ChangePasswordController {
 
     @FXML
     private void handleConfirmButton(ActionEvent event) throws IOException {
+        if(!newPasswordField.getText().equals(confirmNewPasswordField.getText())){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!!");
+            alert.setHeaderText(null);
+            alert.setContentText("ตรวจสอบ Password และ Confirm Password อีกครั้ง");
+            alert.showAndWait();
+        }else if (!oldPasswordField.getText().equals(oldUser.getU_password())){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!!");
+            alert.setHeaderText(null);
+            alert.setContentText("ตรวจสอบ Password เก่าอีกครั้ง");
+            alert.showAndWait();
+        }else{
         String updateQuery = "UPDATE user SET u_password = '"+ newPasswordField.getText() +"' WHERE u_id = '" + oldUser.getU_id() + "'";
         database.updateDatabase(updateQuery);
         System.out.println(updateQuery);
+        }
     }
 
     private void clearTextField() {
