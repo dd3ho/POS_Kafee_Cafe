@@ -14,7 +14,7 @@ public class UserList {
     public void addUser(User user){
         users.add(user);
     }
-
+    public User getUser(int i){ return users.get(i);}
     public int countUsers(){
         return users.size();
     }
