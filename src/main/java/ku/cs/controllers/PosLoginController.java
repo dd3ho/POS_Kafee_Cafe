@@ -63,7 +63,13 @@ public class PosLoginController {
             alert.setContentText("ตรวจสอบชื่อผู้ใช้งานกับรหัสผ่านอีกครั้งเนื่องจากข้อมูลไม่ถูกต้อง");
             alert.showAndWait();
         }else{
-            FXRouter.goTo("pos_signup", usrLoginAccount);
+            if(usrLoginAccount.getU_role().equals("staff")){
+                FXRouter.goTo("pos_staff_menu", usrLoginAccount);
+
+            }
+            else if(usrLoginAccount.getU_role().equals("admin")){
+                FXRouter.goTo("pos_admin_menu", usrLoginAccount);
+            }
         }
     }
 
