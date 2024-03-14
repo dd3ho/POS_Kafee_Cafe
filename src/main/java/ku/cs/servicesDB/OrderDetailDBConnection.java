@@ -74,8 +74,8 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
                 String o_Id = rs.getString(1);
                 String o_receiptId = rs.getNString(2);
                 String o_mnId = rs.getString(3);
-                String o_mnName = rs.getString(4);
-                int o_amount = Integer.parseInt(rs.getString(5));
+                String o_mnName = rs.getString(5);
+                int o_amount = Integer.parseInt(rs.getString(4));
                 float o_priceTotal = Float.parseFloat(rs.getNString(6));
                 float o_priceByUnit = Float.parseFloat(rs.getNString(7));
                 String o_sweet = rs.getString(8);
@@ -128,10 +128,10 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
                 String o_Id = rs.getString(1);
                 String o_receiptId = rs.getNString(2);
                 String o_mnId = rs.getString(3);
-                String o_mnName = rs.getString(4);
-                int o_amount = Integer.parseInt(rs.getString(5));
-                float o_priceTotal = Float.parseFloat(rs.getNString(6));
-                float o_priceByUnit = Float.parseFloat(rs.getNString(7));
+                String o_mnName = rs.getString(5);
+                int o_amount = Integer.parseInt(rs.getString(4));
+                float o_priceTotal = Float.parseFloat(rs.getString(6));
+                float o_priceByUnit = Float.parseFloat(rs.getString(7));
                 String o_sweet = rs.getString(8);
                 String o_milk = rs.getString(9);
                 String o_detail = rs.getString(10);
