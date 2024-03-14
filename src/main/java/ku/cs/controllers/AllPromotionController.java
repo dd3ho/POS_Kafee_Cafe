@@ -86,4 +86,8 @@ public class AllPromotionController {
         FXRouter.goTo("pos_edit_promotion", promotion);
     }
 
+    @FXML
+    private void handleBackButton(ActionEvent event) throws IOException {
+        FXRouter.goTo("pos_admin_menu");
+    }
 }

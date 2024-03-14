@@ -19,7 +19,7 @@
                <children>
                   <HBox prefHeight="87.0" prefWidth="659.0">
                      <children>
-                        <HBox prefHeight="58.0" prefWidth="230.0" />
+                        <HBox alignment="BOTTOM_RIGHT" prefHeight="58.0" prefWidth="230.0" />
                         <Label alignment="CENTER" prefHeight="87.0" prefWidth="258.0" text="All Promotion" textAlignment="CENTER" textFill="#845b44">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="36.0" />
@@ -44,6 +44,11 @@
                         </GridPane>
                      </content>
                   </ScrollPane>
+                  <Button mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="59.0" style="-fx-background-color: #845b44;" text="กลับ" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="14.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </center>

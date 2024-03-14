@@ -14,13 +14,16 @@ public class PaymentController {
 
     @FXML
     public void handleMoney() throws IOException{
+        FXRouter.goTo("pos_finish");
     }
 
     @FXML
     public void handleCard() throws IOException{
+        FXRouter.goTo("pos_finish");
     }
 
     @FXML
     public void handleQR() throws IOException{
+        FXRouter.goTo("pos_finish");
     }
 }
