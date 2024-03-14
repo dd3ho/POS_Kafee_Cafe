@@ -64,7 +64,7 @@ public class EditPromotionController {
         String menuQuery = "SELECT * FROM menu WHERE mn_name = '"+ menuTextField.getText() +"'";
         menuList = databaseMenu.readDatabase(menuQuery);
         menu = menuList.getMenu(0);
-        String updateQuery = "UPDATE promotion SET pro_pDiscount = '"+ dPercentTextField.getText() +"' , pro_bDiscount = '"+ dBahtTextField.getText() +"' , pro_mnId = '"+ menu.getMn_Id() +"'";
+        String updateQuery = "UPDATE promotion SET pro_pDiscount = '"+ dPercentTextField.getText() +"' , pro_bDiscount = '"+ dBahtTextField.getText() +"' , pro_mnId = '"+ menu.getMn_Id() +"' WHERE pro_code = '"+oldPromotion.getPro_code()+"'";
         database.updateDatabase(updateQuery);
         System.out.println(promotion.getPro_mnId());
     }

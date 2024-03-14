@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
@@ -14,32 +16,125 @@
          <children>
             <AnchorPane layoutX="15.0" layoutY="15.0" prefHeight="460.0" prefWidth="370.0" style="-fx-background-color: FBFDF4; -fx-background-radius: 30;">
                <children>
-                  <Label fx:id="nameOfProductLabel" layoutX="14.0" layoutY="40.0" text="Orders" textFill="#c84c4c">
-                     <font>
-                        <Font name="Cambria" size="27.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="20.0" layoutY="347.0" text="Total" textFill="#545454">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="totalLabel" layoutX="275.0" layoutY="347.0" text="total" textFill="#545454">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="21.0" layoutY="317.0" text="--------------------------------------------------">
-                     <font>
-                        <Font name="Cambria" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="21.0" layoutY="382.0" text="--------------------------------------------------">
-                     <font>
-                        <Font name="Cambria" size="20.0" />
-                     </font>
-                  </Label>
-                  <ListView fx:id="orderListview" layoutX="20.0" layoutY="96.0" prefHeight="117.0" prefWidth="330.0" />
+                  <VBox prefHeight="467.0" prefWidth="370.0">
+                     <children>
+                        <HBox prefHeight="26.0" prefWidth="370.0" />
+                        <HBox prefHeight="38.0" prefWidth="370.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="nameOfProductLabel" prefHeight="34.0" prefWidth="209.0" text="  Orders" textFill="#c84c4c">
+                                       <font>
+                                          <Font name="Cambria" size="27.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <ListView fx:id="orderListview" prefHeight="117.0" prefWidth="330.0" />
+                        <Label prefHeight="24.0" prefWidth="372.0" text="------------------------------------------------------" textFill="#d1d0d0">
+                           <font>
+                              <Font name="Cambria" size="20.0" />
+                           </font>
+                        </Label>
+                        <HBox prefHeight="28.0" prefWidth="370.0">
+                           <children>
+                              <HBox prefHeight="28.0" prefWidth="246.0">
+                                 <children>
+                                    <Label prefHeight="24.0" prefWidth="247.0" text="  เลขออเดอร์" textFill="#545454">
+                                       <font>
+                                          <Font name="Cambria" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="orderIdLabel" prefHeight="24.0" prefWidth="130.0" text="orderId" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="28.0" prefWidth="370.0">
+                           <children>
+                              <HBox prefHeight="28.0" prefWidth="246.0">
+                                 <children>
+                                    <Label prefHeight="24.0" prefWidth="262.0" text="  ราคารวม" textFill="#545454">
+                                       <font>
+                                          <Font name="Cambria" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="subTotalLabel" prefHeight="24.0" prefWidth="130.0" text="subTotalLabel" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="28.0" prefWidth="370.0">
+                           <children>
+                              <HBox prefHeight="28.0" prefWidth="246.0">
+                                 <children>
+                                    <Label prefHeight="24.0" prefWidth="262.0" text="  ส่วนลด" textFill="#545454">
+                                       <font>
+                                          <Font name="Cambria" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="discountLabel" text="discount" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="28.0" prefWidth="370.0">
+                           <children>
+                              <HBox prefHeight="28.0" prefWidth="246.0">
+                                 <children>
+                                    <Label prefHeight="24.0" prefWidth="262.0" text="  ยอดรวม" textFill="#545454">
+                                       <font>
+                                          <Font name="Cambria" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="totalLabel" text="total" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="28.0" prefWidth="370.0">
+                           <children>
+                              <HBox prefHeight="28.0" prefWidth="246.0">
+                                 <children>
+                                    <Label prefHeight="24.0" prefWidth="262.0" text="  แต้มที่ได้" textFill="#545454">
+                                       <font>
+                                          <Font name="Cambria" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Label fx:id="pointLabel" text="point" textFill="#545454">
+                                 <font>
+                                    <Font name="Cambria" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Label text="------------------------------------------------------" textFill="#d1d0d0">
+                           <font>
+                              <Font name="Cambria" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
          </children>
