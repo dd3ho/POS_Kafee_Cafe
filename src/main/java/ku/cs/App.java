@@ -52,6 +52,7 @@ public class App extends Application {
         FXRouter.when("pos_staff_menu",packageStr+"pos_staff_menu.fxml");
         FXRouter.when("pos_staff_purchase_order",packageStr+"pos_purchase_order.fxml");
         FXRouter.when("payment",packageStr+"payment.fxml");
+        FXRouter.when("pos_finish",packageStr+"pos_finish.fxml");
 
         FXRouter.when("pos_editDrink",packageStr+"pos_editdrink.fxml");
         FXRouter.when("pos_editDessert",packageStr+"pos_editDessert.fxml");

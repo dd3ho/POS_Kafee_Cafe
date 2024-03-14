@@ -46,17 +46,22 @@ public class PaymentController {
 
     @FXML
     public void handleMoney() throws IOException{
+
         receipt.setR_payType("cash");
+
     }
 
     @FXML
     public void handleCard() throws IOException{
+
         receipt.setR_payType("debit");
     }
 
     @FXML
     public void handleQR() throws IOException{
+
         receipt.setR_payType("qr_code");
+
     }
     @FXML
     void handlePayButton(ActionEvent event) {
@@ -108,6 +113,9 @@ public class PaymentController {
         alert.setHeaderText(null);
         alert.setContentText("ชำระเงินสำเร็จ");
         alert.showAndWait();
+
+        // redirect
+        // FXRouter.goTo("pos_finish");
     }
 //    @FXML
 //    void handlePayButton(ActionEvent event) {
