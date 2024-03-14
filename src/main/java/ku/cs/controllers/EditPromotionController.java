@@ -39,15 +39,15 @@ public class EditPromotionController {
     Database<Promotion, PromotionList> database;
 
     Database<Menu, MenuList> databaseMenu;
-    User usrLoginAccount;
+    Promotion editPromotion;
     @FXML
     public void initialize() {
         clearTextField();
-        usrLoginAccount = (User) FXRouter.getData();
+        editPromotion = (Promotion) FXRouter.getData();
         database = new Promotion_DBConnect();
         databaseMenu = new Menu_DBConnection();
         promotionList = new PromotionList();
-        String query = "SELECT * FROM promotion WHERE pro_code = 'discount04'";
+        String query = "SELECT * FROM promotion WHERE pro_code = '" + editPromotion.getPro_code() +"'";
         promotionList = database.readDatabase(query);
         oldPromotion = promotionList.getPromotion(0);
         System.out.println(oldPromotion.getPro_code());
@@ -61,8 +61,16 @@ public class EditPromotionController {
         menuTextField.setText(promptMenuList.getMenu(0).getMn_name());
         dBahtTextField.setVisible(false);
         discountText.setText("Discount %");
-        dBahtTextField.setText("0");
-        dPercentTextField.setText("0");
+        if(promotion.getPro_bDiscount() == 0f){
+            dBahtTextField.setVisible(false);
+            dPercentTextField.setVisible(true);
+            discountText.setText("Discount %");
+        }
+        else{
+            dBahtTextField.setVisible(true);
+            dPercentTextField.setVisible(false);
+            discountText.setText("Discount Baht");
+        }
     }
     @FXML
     private void handleEditBtn(ActionEvent event) throws IOException {
@@ -72,12 +80,12 @@ public class EditPromotionController {
         String updateQuery = "UPDATE promotion SET pro_pDiscount = '"+ dPercentTextField.getText() +"' , pro_bDiscount = '"+ dBahtTextField.getText() +"' , pro_mnId = '"+ menu.getMn_Id() +"' WHERE pro_code = '"+oldPromotion.getPro_code()+"'";
         database.updateDatabase(updateQuery);
         System.out.println(promotion.getPro_mnId());
-        FXRouter.goTo("pos_admin_menu", usrLoginAccount);
+        FXRouter.goTo("pos_allPromotion");
     }
 
     @FXML
     private void handleBackButton(ActionEvent event) throws IOException {
-        FXRouter.goTo("pos_admin_menu", usrLoginAccount);
+        FXRouter.goTo("pos_allPromotion");
     }
 
     @FXML

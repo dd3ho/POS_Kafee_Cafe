@@ -34,7 +34,7 @@
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <Button layoutX="269.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleAddBtn" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #845b44;" text="Add" textFill="WHITE">
+      <Button layoutX="269.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleEditBtn" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #845b44;" text="Edit" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

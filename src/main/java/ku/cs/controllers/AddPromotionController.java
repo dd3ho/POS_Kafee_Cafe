@@ -71,7 +71,7 @@ public class AddPromotionController {
 
     @FXML
     private void handleBackButton(ActionEvent event) throws IOException {
-        FXRouter.goTo("pos_admin_menu", usrLoginAccount);
+        FXRouter.goTo("pos_allPromotion", usrLoginAccount);
     }
 
     @FXML
