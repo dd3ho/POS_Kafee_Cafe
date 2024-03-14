@@ -31,7 +31,7 @@
             <Font name="Arial Rounded MT Bold" size="27.0" />
          </font>
       </Label>
-      <ImageView fitHeight="32.0" fitWidth="39.0" layoutX="613.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="39.0" layoutX="613.0" layoutY="8.0" onMouseClicked="#handleLogout" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/power.png" />
          </image>
