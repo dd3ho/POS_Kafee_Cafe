@@ -30,10 +30,12 @@ public class PosSignupController {
     UserList userList;
 
     Database<User, UserList> database;
+    User usrLoginAccount;
 
     @FXML
     public void initialize() {
         clearTextField();
+        usrLoginAccount = (User) FXRouter.getData();
         database = new User_DBConnect();
         userList = new UserList();
         String query = "SELECT * FROM user";
@@ -70,8 +72,14 @@ public class PosSignupController {
             user.setU_id(userList);
             database.insertDatabase(user);
             System.out.println("Register successfully:");
+            FXRouter.goTo("pos_admin_menu", usrLoginAccount);
         }
 
+    }
+
+    @FXML
+    private void handleBackButton(ActionEvent event) throws IOException {
+        FXRouter.goTo("pos_admin_menu", usrLoginAccount);
     }
 
     private void clearTextField() {

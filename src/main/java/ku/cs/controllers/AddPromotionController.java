@@ -3,10 +3,8 @@ package ku.cs.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import ku.cs.models.Menu;
-import ku.cs.models.MenuList;
-import ku.cs.models.Promotion;
-import ku.cs.models.PromotionList;
+import ku.cs.FXRouter;
+import ku.cs.models.*;
 import ku.cs.servicesDB.Database;
 import ku.cs.servicesDB.Menu_DBConnection;
 import ku.cs.servicesDB.Promotion_DBConnect;
@@ -37,10 +35,12 @@ public class AddPromotionController {
     Database<Promotion, PromotionList> database;
 
     Database<Menu, MenuList> databaseMenu;
+    User usrLoginAccount;
 
     @FXML
     public void initialize() {
         clearTextField();
+        usrLoginAccount = (User) FXRouter.getData();
         database = new Promotion_DBConnect();
         databaseMenu = new Menu_DBConnection();
         promotionList = new PromotionList();
@@ -58,6 +58,12 @@ public class AddPromotionController {
         promotion.setPro_mnId(menu.getMn_Id());
         database.insertDatabase(promotion);
         System.out.println(promotion.getPro_mnId());
+        FXRouter.goTo("pos_admin_menu", usrLoginAccount);
+    }
+
+    @FXML
+    private void handleBackButton(ActionEvent event) throws IOException {
+        FXRouter.goTo("pos_admin_menu", usrLoginAccount);
     }
 
     private void clearTextField() {

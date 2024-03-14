@@ -44,5 +44,10 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
+      <Button layoutX="36.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="59.0" style="-fx-background-color: #845b44;" text="กลับ" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

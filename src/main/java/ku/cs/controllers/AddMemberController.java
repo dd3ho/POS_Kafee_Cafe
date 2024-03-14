@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import ku.cs.FXRouter;
 import ku.cs.models.Member;
 import ku.cs.models.MemberList;
 import ku.cs.models.User;
@@ -30,10 +31,12 @@ public class AddMemberController {
     Member member = new Member("","","","",0,"","");
 
     Database<Member, MemberList> database;
+    User user;
 
     @FXML
     public void initialize() {
         clearTextField();
+        user = (User) FXRouter.getData();
         database = new Member_DBConnection();
         memberList = new MemberList();
         String query = "SELECT * FROM member";
@@ -64,8 +67,12 @@ public class AddMemberController {
             member.setM_img("test");
             database.insertDatabase(member);
             System.out.println("Register successfully:");
-            System.out.println(member.getM_Id());
+            FXRouter.goTo("pos_staff_menu", user);
         }
+    }
+    @FXML
+    private void handleBackButton(ActionEvent event) throws IOException {
+        FXRouter.goTo("pos_staff_menu", user);
     }
 
     private void clearTextField() {

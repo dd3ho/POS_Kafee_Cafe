@@ -28,9 +28,11 @@ public class ChangePasswordController {
     User oldUser;
 
     Database<User, UserList> database;
+    User usrLoginAccount;
     @FXML
     public void initialize() {
         clearTextField();
+        usrLoginAccount = (User) FXRouter.getData();
         database = new User_DBConnect();
         oldUser = (User) FXRouter.getData();
         System.out.println(oldUser.getU_id());
@@ -53,8 +55,12 @@ public class ChangePasswordController {
         }else{
         String updateQuery = "UPDATE user SET u_password = '"+ newPasswordField.getText() +"' WHERE u_id = '" + oldUser.getU_id() + "'";
         database.updateDatabase(updateQuery);
-        System.out.println(updateQuery);
+        FXRouter.goTo("pos_staff_menu", usrLoginAccount);
         }
+    }
+    @FXML
+    private void handleBackButton(ActionEvent event) throws IOException {
+        FXRouter.goTo("pos_staff_menu", usrLoginAccount);
     }
 
     private void clearTextField() {

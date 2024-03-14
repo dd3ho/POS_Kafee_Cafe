@@ -18,12 +18,12 @@ public class StaffMenuController {
 
     @FXML
     private void handleSignupBtn(ActionEvent event) throws IOException {
-        FXRouter.goTo("pos_addMember");
+        FXRouter.goTo("pos_addMember",user);
     }
 
     @FXML
     private void handleAddOrderBtn(ActionEvent event) throws IOException {
-        FXRouter.goTo("shop");
+        FXRouter.goTo("shop",user);
     }
 
     @FXML
