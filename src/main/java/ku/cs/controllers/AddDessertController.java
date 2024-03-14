@@ -77,29 +77,29 @@ public class AddDessertController {
         menuList = database.readDatabase(query);
     }
 
-    @FXML
-    private void handleNoSweetnessBtn(ActionEvent event) throws IOException {
-        menu.setMn_option("no");
-        noSweetBtn.setStyle("-fx-background-color: #632f15");
-        lessSweetBtn.setStyle("-fx-background-color: #b68e78");
-        extraSweetBtn.setStyle("-fx-background-color: #b68e78");
-    }
-
-    @FXML
-    private void handleLessSweetnessBtn(ActionEvent event) throws IOException {
-        menu.setMn_option("less");
-        lessSweetBtn.setStyle("-fx-background-color: #632f15");
-        noSweetBtn.setStyle("-fx-background-color: #b68e78");
-        extraSweetBtn.setStyle("-fx-background-color: #b68e78");
-    }
-
-    @FXML
-    private void handleExtraSweetnessBtn(ActionEvent event) throws IOException {
-        menu.setMn_option("extra");
-        extraSweetBtn.setStyle("-fx-background-color: #632f15");
-        lessSweetBtn.setStyle("-fx-background-color: #b68e78");
-        noSweetBtn.setStyle("-fx-background-color: #b68e78");
-    }
+//    @FXML
+//    private void handleNoSweetnessBtn(ActionEvent event) throws IOException {
+//        menu.setMn_option("no");
+//        noSweetBtn.setStyle("-fx-background-color: #632f15");
+//        lessSweetBtn.setStyle("-fx-background-color: #b68e78");
+//        extraSweetBtn.setStyle("-fx-background-color: #b68e78");
+//    }
+//
+//    @FXML
+//    private void handleLessSweetnessBtn(ActionEvent event) throws IOException {
+//        menu.setMn_option("less");
+//        lessSweetBtn.setStyle("-fx-background-color: #632f15");
+//        noSweetBtn.setStyle("-fx-background-color: #b68e78");
+//        extraSweetBtn.setStyle("-fx-background-color: #b68e78");
+//    }
+//
+//    @FXML
+//    private void handleExtraSweetnessBtn(ActionEvent event) throws IOException {
+//        menu.setMn_option("extra");
+//        extraSweetBtn.setStyle("-fx-background-color: #632f15");
+//        lessSweetBtn.setStyle("-fx-background-color: #b68e78");
+//        noSweetBtn.setStyle("-fx-background-color: #b68e78");
+//    }
 
     @FXML
     private void handleBackBtn(ActionEvent event) throws IOException {
@@ -108,16 +108,8 @@ public class AddDessertController {
 
     @FXML
     private void handleAddBtn(ActionEvent event) throws IOException {
-        String nameStr = nameField.getText();
-        String priceStr = priceField.getText();
-        String descStr = descField.getText();
 
-        menu.setMn_name(nameStr);
-        menu.setMn_price(Float.valueOf(priceStr));
-        menu.setMn_img("menu_photo/"+ imageName);
-        //FXRouter.goTo("pos_allMenu");
-
-        if (nameField.equals("") || priceField.equals("")) {
+        if (nameField.getText().equals("") || priceField.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");
             alert.setHeaderText(null);
@@ -126,6 +118,13 @@ public class AddDessertController {
             alert.showAndWait();
 
         } else {
+            String nameStr = nameField.getText();
+            String priceStr = priceField.getText();
+
+            menu.setMn_name(nameStr);
+            menu.setMn_price(Float.valueOf(priceStr));
+            menu.setMn_img("menu_photo/"+ imageName);
+
             menu.setMn_Id(menuList);
             database.insertDatabase(menu);
             System.out.println(menu.getMn_Id() + "," + menu.getMn_name() + "," + menu.getMn_option());
@@ -140,6 +139,8 @@ public class AddDessertController {
             //System.out.println(menuListToCsv.toCsv());
             DataSource<MenuList> dataSource = new MenuFileDataSource();
             dataSource.writeData(menuListToCsv);
+
+            FXRouter.goTo("pos_allMenu");
         }
     }
 
@@ -163,6 +164,5 @@ public class AddDessertController {
     private void clearTextField() {
         nameField.setText("");
         priceField.setText("");
-        descField.setText("");
     }
 }

@@ -54,18 +54,8 @@ public class EditDrinkController {
 
     @FXML
     public void handleEditBtn(ActionEvent event) throws IOException {
-        String name = nameTextfield.getText();
-        Float price = Float.parseFloat(priceTextfield.getText());
 
-        this.menu.setMn_name(name);
-        menu.setMn_price(price);
-        menu.setM_type("drink");
-        menu.setMn_status("sell");
-        menu.setMn_option("-");
-        menu.setMn_img(imageName);
-
-
-        if (nameTextfield.equals("") || priceTextfield.equals("")) {
+        if (nameTextfield.getText().equals("") || priceTextfield.getText().equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");
             alert.setHeaderText(null);
@@ -74,18 +64,33 @@ public class EditDrinkController {
             alert.showAndWait();
 
         } else {
+            String name = nameTextfield.getText();
+            Float price = Float.parseFloat(priceTextfield.getText());
+
+            menu.setMn_name(name);
+            menu.setMn_price(price);
+            menu.setM_type("drink");
+            menu.setMn_status("sell");
+            menu.setMn_option("-");
+            menu.setMn_img(imageName);
+
+
             Database<Menu, MenuList> menuListDatabase = new Menu_DBConnection();
             System.out.println(menu.getMn_Id() + "," + menu.getMn_name() + "," + menu.getMn_option());
-            String q = "Update menu Set mn_name = '" + menu.getMn_name() + "', mn_price = " + menu.getMn_price() + ",mn_status = '" + menu.getMn_status() + "', mn_option = '"
-                    + menu.getMn_option() + "', m_type = '" + menu.getM_type() + "', mn_img = 'menu_photo/" + menu.getMn_img() + "' WHERE mn_id = '" + menu.getMn_Id() + "';";
-            menuListDatabase.updateDatabase(q);
+            String q;
             // save image
             if(selectedFile != null) {
                 System.out.println(selectedFile.toString());
                 File file = new File("menu_photo");
                 Path path = FileSystems.getDefault().getPath(file.getAbsolutePath() + "\\" + imageName);
                 Files.copy(selectedFile.toPath(), path, StandardCopyOption.REPLACE_EXISTING);
+                q = "Update menu Set mn_name = '" + menu.getMn_name() + "', mn_price = " + menu.getMn_price() + ",mn_status = '" + menu.getMn_status() + "', mn_option = '"
+                        + menu.getMn_option() + "', m_type = '" + menu.getM_type() + "', mn_img = 'menu_photo/" + menu.getMn_img() + "' WHERE mn_id = '" + menu.getMn_Id() + "';";
+            } else {
+                q = "Update menu Set mn_name = '" + menu.getMn_name() + "', mn_price = " + menu.getMn_price() + ",mn_status = '" + menu.getMn_status() + "', mn_option = '"
+                        + menu.getMn_option() + "', m_type = '" + menu.getM_type() + "', mn_img = '" + menu.getMn_img() + "' WHERE mn_id = '" + menu.getMn_Id() + "';";
             }
+            menuListDatabase.updateDatabase(q);
 
             // write to csv --- null
             MenuList menuListToCsv = menuListDatabase.readDatabase("SELECT * FROM menu");
