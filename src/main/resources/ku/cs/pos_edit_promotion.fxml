@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="659.0" style="-fx-background-color: f1e1d8;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.EditPromotionController">
    <children>
-      <Label layoutX="259.0" layoutY="56.0" text="Edit Promotion" textFill="#845b44">
+      <Label layoutX="238.0" layoutY="56.0" text="Edit Promotion" textFill="#845b44">
          <font>
             <Font name="Arial Rounded MT Bold" size="28.0" />
          </font>

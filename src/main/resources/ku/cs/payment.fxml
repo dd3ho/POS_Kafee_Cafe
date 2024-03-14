@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="466.0" prefWidth="659.0" style="-fx-background-color: f1e1d8;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.controllers.PaymentController">
+   <children>
+      <Label layoutX="279.0" layoutY="58.0" text="Payment" textFill="#845b44">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="28.0" />
+         </font>
+      </Label>
+      <Button layoutX="36.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="59.0" style="-fx-background-color: #845b44;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="147.0" onMouseClicked="#handleMoney" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/money.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="271.0" layoutY="147.0" onMouseClicked="#handleCard" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/creditcard.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="469.0" layoutY="147.0" onMouseClicked="#handleQR" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../image/qrcode.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="116.0" layoutY="307.0" text="เงินสด" textFill="#845b44">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="279.0" layoutY="307.0" text="บัตรเดบิต/เครดิต" textFill="#845b44">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="506.0" layoutY="307.0" text="QR Code" textFill="#845b44">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
