@@ -90,6 +90,11 @@ public class PurchaseOrderController {
     //point
     private int points = 0;
 
+    // checkout
+    public Receipt receiptCheckout = new Receipt("-", "-", 0,0,"-","");
+
+    // promotionId
+    String promotionId;
 
     @FXML
     public void initialize() {
@@ -204,7 +209,18 @@ public class PurchaseOrderController {
 
     @FXML
     void handleCheckoutButton(ActionEvent event) {
+        receiptCheckout.setR_iString(orderIdLabel.getText());
+        receiptCheckout.setR_promotionId(promotionId);
+        receiptCheckout.setR_discount(discountAfterAddPromotion);
+        receiptCheckout.setR_totalPrice(total);
 
+        System.out.println(receiptCheckout.toCsv());
+        try {
+            FXRouter.goTo("payment", receiptCheckout);
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า system_for_user ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
+        }
 
 
     }
@@ -245,6 +261,7 @@ public class PurchaseOrderController {
 
             if (promotionRecord != null) {
                 // ค้นหาข้อมูลโปรโมชันจากฐานข้อมูล [เจอ]
+                promotionId = promotionRecord.getPro_code();
 
                 // เพิ่มโปรโมชัน
                 promotionsList.addPromotion(new Promotion(
@@ -303,6 +320,7 @@ public class PurchaseOrderController {
 
     @FXML
     void handleDeleteButton(ActionEvent event) {
+        promotionId = "";
         promotionsList.clearListPromotion();
         showPromotionListView(promotionsList);
         // เปิดใช้งานปุ่ม addButton

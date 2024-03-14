@@ -29,8 +29,11 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
             conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/pm_project", "root", "");
             System.out.println("Connection is created successfully:");
             stmt = (Statement) conn.createStatement();
-            String query1 = "INSERT INTO order_deatail " + "VALUES ('" + order_detail.getO_Id() + "','" + order_detail.getO_receiptId() + "','" + order_detail.getO_mnId() + "','" + order_detail.getO_mnName() + "','" + order_detail.getO_amount() + "','" + order_detail.getO_priceTotal() +
-                    "','" + order_detail.getO_priceByUnit() + "','" + order_detail.getO_sweet() + "','" + order_detail.getO_milk() +"','" + order_detail.getO_detail() + "')";
+            String query1 = "INSERT INTO order_detail (o_id, o_receipt_Id, o_mn_Id, o_mnName, o_amount, o_priceTotal, o_priceByUnit, o_sweet, o_milk, o_detail) " +
+                    "VALUES ('" + order_detail.getO_Id() + "','" + order_detail.getO_receiptId() + "','" + order_detail.getO_mnId() + "','" +
+                    order_detail.getO_mnName() + "','" + order_detail.getO_amount() + "','" + order_detail.getO_priceTotal() +
+                    "','" + order_detail.getO_priceByUnit() + "','" + order_detail.getO_sweet() + "','" +
+                    order_detail.getO_milk() +"','" + order_detail.getO_detail() + "')";
             stmt.executeUpdate(query1);
             System.out.println("Record is inserted in the table successfully..................");
         } catch (Exception excep) {
@@ -139,6 +142,8 @@ public class OrderDetailDBConnection implements Database<OrderDetail, OrderDetai
                 list.addOrder(orderRecord);
 //                System.out.println(empLoginAccount.toCsv());
             }
+            System.out.println("OrderDetail Database");
+            System.out.println(list.toCsv());
             System.out.println("list can use from jdbc");
         } catch (Exception excep) {
             excep.printStackTrace();

@@ -19,6 +19,11 @@ public class Receipt {
     public void setR_id(ReceiptList receipts) {
         this.r_id = "r" + String.format("%03d", receipts.countReceipts()+1);
     }
+    public void setR_iString(String rId) {
+        this.r_id = rId;
+    }
+
+
 
     public void setR_promotionId(String r_promotionId) {
         this.r_promotionId = r_promotionId;

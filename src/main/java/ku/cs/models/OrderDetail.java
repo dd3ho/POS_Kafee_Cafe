@@ -28,6 +28,10 @@ public class OrderDetail {
         this.o_detail = o_detail;
     }
 
+    public OrderDetail() {
+
+    }
+
     public String getO_Id() {
         return o_Id;
     }
@@ -119,4 +123,7 @@ public class OrderDetail {
                 o_priceTotal+ "," + o_priceByUnit + "," + o_sweet + "," + o_milk+","+o_detail;
     }
 
+    public void setO_IdPayment(int i) {
+        this.o_Id = "o" + String.format("%03d", i);
+    }
 }
