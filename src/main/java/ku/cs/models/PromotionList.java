@@ -1,5 +1,9 @@
 package ku.cs.models;
 
+import ku.cs.servicesDB.DataSource;
+import ku.cs.servicesDB.PromotionFileDataSource;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class PromotionList {
@@ -23,4 +27,16 @@ public class PromotionList {
         }
         return result;
     }
+    //return OrderDetail ใน list ตัวที่ i
+    public  Promotion getPromotionRecord(int i){
+        Promotion promotion = promotions.get(i);
+        return promotion;
+    }
+
+//    clear list
+    public void clearListPromotion(){
+        promotions.clear();
+    }
+
+
 }

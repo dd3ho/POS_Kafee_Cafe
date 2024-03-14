@@ -224,6 +224,7 @@ public class shopController {
         milkChoiceBox.setValue(null);
         sweetnessChoiceBox.setValue(null);
 
+
     }
 
     @FXML
@@ -265,7 +266,6 @@ public class shopController {
         totalLabel.setText(String.valueOf(totalPriceOrder));
         // clearText
         clearTextField();
-
 
     }
     private void showListView(OrderDetailList orders) {
@@ -431,12 +431,22 @@ public class shopController {
 
     @FXML
     void handleOrderButton(ActionEvent event) {
-        try {
-            FXRouter.goTo("pos_staff_purchase_order");
-        } catch (IOException e) {
-            System.err.println("ไปที่หน้า pos_staff_purchase_order ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกำหนด route");
+        // ใช้ Float.parseFloat() แทน Integer.parseInt()
+        float totalValue = Float.parseFloat(totalLabel.getText());
+        if (totalValue == 0){
+            System.out.println("กรุณาเพิ่มสินค้า");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("error");
+            alert.setHeaderText(null);
+            alert.setContentText("กรุณาเพิ่มสินค้า");
+            alert.showAndWait();
+        }else{
+            try {
+                FXRouter.goTo("pos_staff_purchase_order");
+            } catch (IOException e) {
+                System.err.println("ไปที่หน้า pos_staff_purchase_order ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกำหนด route");
+            }
         }
-
     }
 }

@@ -68,8 +68,8 @@ public class OrderDetail {
         return o_detail;
     }
 
-    public void setO_Id(String o_Id) {
-        this.o_Id = o_Id;
+    public void setO_Id(OrderDetailList orders) {
+        this.o_Id = "o" + String.format("%03d", orders.countOrders()+1);
     }
 
     public void setO_receiptId(String o_receiptId) {

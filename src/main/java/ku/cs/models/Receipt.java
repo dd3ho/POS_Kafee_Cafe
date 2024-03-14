@@ -16,9 +16,8 @@ public class Receipt {
         this.r_payType = r_payType;
         this.r_memberId = r_memberId;
     }
-
-    public void setR_id(String r_id) {
-        this.r_id = r_id;
+    public void setR_id(ReceiptList receipts) {
+        this.r_id = "r" + String.format("%03d", receipts.countReceipts()+1);
     }
 
     public void setR_promotionId(String r_promotionId) {
