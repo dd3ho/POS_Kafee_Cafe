@@ -24,13 +24,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
-public class EditDrinkController {
-
+public class EditDessertController {
     @FXML private TextField nameTextfield;
 
     @FXML private TextField priceTextfield;
 
-    @FXML private ImageView drinkImg;
+    @FXML private ImageView dessertImg;
 
     @FXML private Button imgBtn;
 
@@ -48,7 +47,7 @@ public class EditDrinkController {
         if(menu.getMn_img() != null){
             imgBtn.setText("Change Photo");
             Image img = new Image("file:" + menu.getMn_img(), true);
-            drinkImg.setImage(img);
+            dessertImg.setImage(img);
         }
     }
 
@@ -59,7 +58,7 @@ public class EditDrinkController {
 
         this.menu.setMn_name(name);
         menu.setMn_price(price);
-        menu.setM_type("drink");
+        menu.setM_type("dessert");
         menu.setMn_status("sell");
         menu.setMn_option("-");
         menu.setMn_img(imageName);
@@ -79,13 +78,11 @@ public class EditDrinkController {
             String q = "Update menu Set mn_name = '" + menu.getMn_name() + "', mn_price = " + menu.getMn_price() + ",mn_status = '" + menu.getMn_status() + "', mn_option = '"
                     + menu.getMn_option() + "', m_type = '" + menu.getM_type() + "', mn_img = 'menu_photo/" + menu.getMn_img() + "' WHERE mn_id = '" + menu.getMn_Id() + "';";
             menuListDatabase.updateDatabase(q);
+            System.out.println(selectedFile.toString());
             // save image
-            if(selectedFile != null) {
-                System.out.println(selectedFile.toString());
-                File file = new File("menu_photo");
-                Path path = FileSystems.getDefault().getPath(file.getAbsolutePath() + "\\" + imageName);
-                Files.copy(selectedFile.toPath(), path, StandardCopyOption.REPLACE_EXISTING);
-            }
+            File file = new File("menu_photo");
+            Path path = FileSystems.getDefault().getPath(file.getAbsolutePath() + "\\" + imageName);
+            Files.copy(selectedFile.toPath(), path, StandardCopyOption.REPLACE_EXISTING);
 
             // write to csv --- null
             MenuList menuListToCsv = menuListDatabase.readDatabase("SELECT * FROM menu");
@@ -109,7 +106,7 @@ public class EditDrinkController {
             imageName = file.getName();
             System.out.println(imageName);
             Image image = new Image("file:///" + selectedFile.getAbsolutePath());
-            drinkImg.setImage(image);
+            dessertImg.setImage(image);
             imgBtn.setText("Change Photo");
         }
     }

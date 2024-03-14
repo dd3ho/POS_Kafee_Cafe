@@ -47,7 +47,7 @@
                                        </font></Button>
                                  </children>
                               </HBox>
-                              <ScrollPane prefHeight="167.0" prefWidth="646.0">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="167.0" prefWidth="646.0">
                                  <content>
                                     <GridPane fx:id="drinkGridPane" prefHeight="161.0" prefWidth="628.0">
                                       <rowConstraints>
@@ -79,7 +79,7 @@
                                        </font></Button>
                                  </children>
                               </HBox>
-                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                              <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
                                  <content>
                                     <GridPane fx:id="dessertGridPane" prefHeight="167.0" prefWidth="626.0">
                                       <rowConstraints>

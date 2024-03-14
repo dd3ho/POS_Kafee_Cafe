@@ -32,17 +32,17 @@ public class AllMenuController {
     @FXML
     private Button addDessertBtn;
 
-    Database<Menu, MenuList> drinkData;
+    private Database<Menu, MenuList> drinkData;
 
-    Database<Menu, MenuList> dessertData;
+    private Database<Menu, MenuList> dessertData;
 
-    MenuList drinks;
+    private MenuList drinks;
 
-    MenuList desserts;
+    private MenuList desserts;
 
-    MyListener myListener;
+    private MyListener myListener;
 
-    private Menu menuItem;
+    private Menu menu;
 
     @FXML
     public void initialize() {
@@ -59,6 +59,13 @@ public class AllMenuController {
 
     @FXML
     public  void showDrink(){
+        myListener = new MyListener() {
+            @Override
+            public void onClickListener(Menu menu) throws IOException{
+                gotoEditDrinkPage(menu);
+            }
+        };
+
         int column = 3;
         int row = 0;
         try {
@@ -75,7 +82,7 @@ public class AllMenuController {
                 }
                 //System.out.println(drinks.getMenu(i).toCsv());
                 drinkGridPane.add(pane, column++, row);
-                GridPane.setMargin(pane, new Insets(12));
+                GridPane.setMargin(pane, new Insets(10));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,6 +91,14 @@ public class AllMenuController {
 
     @FXML
     public void showDessert() {
+        myListener = new MyListener() {
+            @Override
+            public void onClickListener(Menu menu) throws IOException{
+                gotoEditDessertPage(menu);
+            }
+
+        };
+
         int column = 3;
         int row = 0;
         try {
@@ -100,7 +115,7 @@ public class AllMenuController {
                 }
                 //System.out.println(drinks.getMenu(i).toCsv());
                 dessertGridPane.add(pane, column++, row);
-                GridPane.setMargin(pane, new Insets(12));
+                GridPane.setMargin(pane, new Insets(10));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -113,6 +128,14 @@ public class AllMenuController {
         } else if (event.getSource() == addDessertBtn) {
             FXRouter.goTo("pos_addDessert");
         }
+    }
+
+    private void gotoEditDrinkPage(Menu menu) throws IOException {
+        FXRouter.goTo("pos_editDrink", menu);
+    }
+
+    private void gotoEditDessertPage(Menu menu) throws IOException {
+        FXRouter.goTo("pos_editDessert", menu);
     }
 }
 

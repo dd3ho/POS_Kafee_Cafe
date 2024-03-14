@@ -23,9 +23,10 @@ public class ItemController {
     private ImageView img;
 
     @FXML
-    private void click(MouseEvent mouseEvent){
+    private void click(MouseEvent mouseEvent) throws IOException {
         myListener.onClickListener(menuTemp);
     }
+
     private Menu menuTemp;
     private MyListener myListener;
 
