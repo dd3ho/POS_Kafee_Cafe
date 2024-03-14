@@ -2,6 +2,7 @@ package ku.cs.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import ku.cs.FXRouter;
 import ku.cs.models.*;
@@ -23,7 +24,8 @@ public class EditPromotionController {
 
     @FXML
     private TextField menuTextField;
-
+    @FXML
+    private Label discountText;
     public Promotion promotion = new Promotion("",0,0,"");
 
     public Menu menu = new Menu("0","0",0f,"0","0","","");
@@ -57,6 +59,10 @@ public class EditPromotionController {
         String menuQuery = "SELECT * FROM menu WHERE mn_id = '"+ oldPromotion.getPro_mnId() +"'";
         promptMenuList = databaseMenu.readDatabase(menuQuery);
         menuTextField.setText(promptMenuList.getMenu(0).getMn_name());
+        dBahtTextField.setVisible(false);
+        discountText.setText("Discount %");
+        dBahtTextField.setText("0");
+        dPercentTextField.setText("0");
     }
     @FXML
     private void handleEditBtn(ActionEvent event) throws IOException {
@@ -72,6 +78,21 @@ public class EditPromotionController {
     @FXML
     private void handleBackButton(ActionEvent event) throws IOException {
         FXRouter.goTo("pos_admin_menu", usrLoginAccount);
+    }
+
+    @FXML
+    private void handleSwitchButton(ActionEvent event) throws IOException {
+        if(dBahtTextField.isVisible()) {
+            dBahtTextField.setVisible(false);
+            dBahtTextField.setText("0");
+            dPercentTextField.setVisible(true);
+            discountText.setText("Discount %");
+        }else{
+            dBahtTextField.setVisible(true);
+            dPercentTextField.setText("0");
+            dPercentTextField.setVisible(false);
+            discountText.setText("Discount Baht");
+        }
     }
 
     private void clearTextField() {

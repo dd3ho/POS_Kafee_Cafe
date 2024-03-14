@@ -21,18 +21,13 @@
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="dPercentTextField" layoutX="205.0" layoutY="220.0" prefHeight="26.0" prefWidth="114.0" />
-      <Label layoutX="208.0" layoutY="193.0" text="Discount %">
+      <TextField fx:id="dPercentTextField" layoutX="205.0" layoutY="220.0" prefHeight="26.0" prefWidth="242.0" />
+      <Label fx:id="discountText" layoutX="208.0" layoutY="193.0" text="Discount %">
          <font>
             <Font name="Arial Rounded MT Bold" size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="dBahtTextField" layoutX="346.0" layoutY="220.0" prefHeight="26.0" prefWidth="114.0" />
-      <Label layoutX="349.0" layoutY="193.0" text="Discount Baht">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="17.0" />
-         </font>
-      </Label>
+      <TextField fx:id="dBahtTextField" layoutX="205.0" layoutY="220.0" prefHeight="26.0" prefWidth="242.0" />
       <TextField fx:id="menuTextField" layoutX="204.0" layoutY="290.0" prefHeight="26.0" prefWidth="248.0" />
       <Label layoutX="207.0" layoutY="263.0" text="Menu">
          <font>
@@ -47,6 +42,11 @@
       <Button layoutX="36.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="34.0" prefWidth="59.0" style="-fx-background-color: #845b44;" text="กลับ" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="339.0" layoutY="192.0" mnemonicParsing="false" onAction="#handleSwitchButton" prefHeight="22.0" prefWidth="59.0" style="-fx-background-color: #845b44;" text="Switch" textFill="WHITE">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="11.0" />
          </font>
       </Button>
    </children>
