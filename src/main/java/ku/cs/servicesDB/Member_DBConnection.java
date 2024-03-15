@@ -121,6 +121,8 @@ public class Member_DBConnection implements Database<Member, MemberList>{
                 String m_date_join = rs.getNString(6);
                 String m_lasted = rs.getString(7);
 //                System.out.println(empLoginAccount.toCsv());
+                this.memberRecord = new Member(m_Id,m_firstname,m_lastname,m_tel,m_points,m_date_join,m_lasted);
+                list.addMember(memberRecord);
             }
             System.out.println("list can use from jdbc");
         } catch (Exception excep) {

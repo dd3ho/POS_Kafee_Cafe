@@ -47,12 +47,12 @@
             <Font name="Leelawadee" size="15.0" />
          </font>
       </Label>
-      <ImageView fitHeight="125.0" fitWidth="152.0" layoutX="155.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="memberPhoto" fitHeight="125.0" fitWidth="152.0" layoutX="155.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../image/Profile_icon.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="190.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleSignUpButton" style="-fx-background-color: #845b44;" text="เพิ่มรูป" textFill="WHITE">
+      <Button layoutX="190.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleAddPhotoButton" style="-fx-background-color: #845b44;" text="เพิ่มรูป" textFill="WHITE">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>

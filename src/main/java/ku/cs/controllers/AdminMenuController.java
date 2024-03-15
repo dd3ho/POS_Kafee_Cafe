@@ -23,7 +23,7 @@ public class AdminMenuController {
     }
     @FXML
     private void handleAddPromotionBtn(ActionEvent event) throws IOException {
-        FXRouter.goTo("pos_promotion",user);
+        FXRouter.goTo("pos_allPromotion",user);
     }
 
     @FXML

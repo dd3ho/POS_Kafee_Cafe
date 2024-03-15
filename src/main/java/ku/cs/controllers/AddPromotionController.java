@@ -66,7 +66,7 @@ public class AddPromotionController {
         promotion.setPro_mnId(menu.getMn_Id());
         database.insertDatabase(promotion);
         System.out.println(promotion.getPro_mnId());
-        FXRouter.goTo("pos_admin_menu", usrLoginAccount);
+        FXRouter.goTo("pos_allPromotion", usrLoginAccount);
     }
 
     @FXML

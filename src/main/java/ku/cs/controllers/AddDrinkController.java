@@ -142,7 +142,7 @@ public class AddDrinkController {
 
     @FXML
     private void handleBackBtn(ActionEvent event) throws IOException {
-
+        FXRouter.goTo("pos_allMenu");
     }
 
     @FXML
@@ -162,7 +162,6 @@ public class AddDrinkController {
 
             menu.setMn_name(nameStr);
             menu.setMn_price(Float.valueOf(priceStr));
-            menu.setMn_img("test");
             menu.setM_type("drink");
             menu.setMn_status("sell");
             menu.setMn_option(sweet + "," + milk);

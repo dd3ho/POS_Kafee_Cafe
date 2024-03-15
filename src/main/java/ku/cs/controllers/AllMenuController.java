@@ -130,6 +130,12 @@ public class AllMenuController {
         }
     }
 
+    @FXML
+    private void handleBackBtn(ActionEvent event) throws IOException {
+        FXRouter.goTo("pos_admin_menu");
+
+    }
+
     private void gotoEditDrinkPage(Menu menu) throws IOException {
         FXRouter.goTo("pos_editDrink", menu);
     }

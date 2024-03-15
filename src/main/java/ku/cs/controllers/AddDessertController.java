@@ -103,7 +103,7 @@ public class AddDessertController {
 
     @FXML
     private void handleBackBtn(ActionEvent event) throws IOException {
-
+        FXRouter.goTo("pos_allMenu");
     }
 
     @FXML
